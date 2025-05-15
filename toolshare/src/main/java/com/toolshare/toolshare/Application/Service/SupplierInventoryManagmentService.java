@@ -4,7 +4,11 @@ import java.time.LocalDate;
 import java.util.List;
 
 import com.toolshare.toolshare.Domain.ToolsEquipmentConstruction;
+import com.toolshare.toolshare.Domain.Enum.TypeToolsEC;
+import com.toolshare.toolshare.Domain.dto.ToolsECRequest;
 
 public interface SupplierInventoryManagmentService {
-    public List<ToolsEquipmentConstruction> AddToolsEC(Enum typeS, String nameS, String categoryS, LocalDate dateRegisterS, Double priceDayS, String descriptionS, Enum statusS);
+    ToolsEquipmentConstruction AddToolsEC(ToolsECRequest dto);
+    ToolsEquipmentConstruction deleteTool(Long id);
+    ToolsEquipmentConstruction updateTool(Long id, Double priceDayS);
 }

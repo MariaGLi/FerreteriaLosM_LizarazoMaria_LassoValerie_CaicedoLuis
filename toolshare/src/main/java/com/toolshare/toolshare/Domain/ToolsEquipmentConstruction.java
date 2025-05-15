@@ -3,6 +3,7 @@ package com.toolshare.toolshare.Domain;
 import java.time.LocalDate;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.toolshare.toolshare.Domain.Enum.StatusToolsEC;
 import com.toolshare.toolshare.Domain.Enum.TypeToolsEC;
@@ -49,13 +50,16 @@ public class ToolsEquipmentConstruction {
 
     @ManyToOne
     @JoinColumn(nullable = false)
+    @JsonIgnore
     private Users id_user_supplier;
 
     @ManyToMany(mappedBy = "toolsECList")
     @JsonManagedReference
+    @JsonIgnore
     private List<Reservations> reservations_list;
 
     @OneToMany(mappedBy = "toolsEquipmentConstruction")
+    @JsonIgnore
     private List<ToolsInvoices> tools_invoices_list;
 
     public ToolsEquipmentConstruction() {
