@@ -13,4 +13,5 @@ public enum TypeToolsEC {
     public String getType() {
         return type;
     }
+
 }
