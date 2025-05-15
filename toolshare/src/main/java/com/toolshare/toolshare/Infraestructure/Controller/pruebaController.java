@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 
 @RestController
-@RequestMapping("/api/prueba")
+@RequestMapping("/api/admin")
 @RequiredArgsConstructor
 public class pruebaController {
-    @PostMapping("/demo")
+    @PostMapping("/users")
     public String hola() {
         return "holaa";
     }
