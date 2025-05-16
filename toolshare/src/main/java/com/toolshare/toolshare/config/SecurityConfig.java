@@ -29,6 +29,7 @@ public class SecurityConfig {
         auth
             .requestMatchers("/api/auth/**").permitAll()
             .requestMatchers("/api/admin/**").hasRole("Admin")
+            .requestMatchers("/InventoryManagment/**").hasRole("Supplier")
             .anyRequest().authenticated()
         )
         .sessionManagement(sessionManager->
