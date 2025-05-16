@@ -61,7 +61,7 @@ public class SupplierInventoryManagmentIMP implements SupplierInventoryManagment
     }
 
     @Override
-    public ToolsEquipmentConstruction updateTool(Long id, Double priceDay) {
+    public ToolsEquipmentConstruction updateTool(Long id, Double priceDay, StatusToolsEC statusS) {
         
         Optional<ToolsEquipmentConstruction> findTool= repository.findById(id);
         
@@ -70,6 +70,7 @@ public class SupplierInventoryManagmentIMP implements SupplierInventoryManagment
         } 
         ToolsEquipmentConstruction toolExist= findTool.get();
         toolExist.setPrice_day(priceDay);
+        toolExist.setStatus(statusS);
 
         return repository.save(toolExist);
     }
