@@ -1,107 +1,107 @@
 CREATE TABLE Users (
-    id SERIAL PRIMARY KEY,
-    username VARCHAR NOT NULL,
+    id BIGSERIAL PRIMARY KEY,
+    username VARCHAR(10) NOT NULL,
     password VARCHAR NOT NULL,
-    type VARCHAR CHECK (type IN ('Customer', 'Supplier', 'Admin'))
+    type VARCHAR(100) NOT NULL CHECK (type IN ('Customer', 'Supplier', 'Admin'))
 );
 
-CREATE TABLE Person (
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
-    lastname VARCHAR(100) NOT NULL,
-    cellphone VARCHAR(20),
+CREATE TABLE Persons (
+    id BIGSERIAL PRIMARY KEY,
+    name VARCHAR(30) NOT NULL,
+    last_name VARCHAR(30) NOT NULL,
+    cellphone VARCHAR(30),
     email VARCHAR(100),
-    date_register DATE,
-    id_users INT REFERENCES Users(id)
+    date_register DATE NOT NULL,
+    id_user BIGINT NOT NULL REFERENCES Users(id)
 );
---drop tABLE Person;
+--drop tABLE Persons;
 CREATE TABLE Tools_EquipmentConstruction (
-    id SERIAL PRIMARY KEY,
-    type VARCHAR(100) CHECK (type IN ('Tool', 'EquipmentConstruction')),
-    name VARCHAR(100) NOT NULL,
-    category VARCHAR(100),
-    date_register DATE,
-    price_day DOUBLE PRECISION,
-    description VARCHAR(100),
-    status VARCHAR(100) CHECK (status IN ('Available', 'Rented', 'Damaged','Under maintenance')),
-    idUsers_Suppliers INT REFERENCES Users(id)
+    id BIGSERIAL PRIMARY KEY,
+    type VARCHAR(100) NOT NULL CHECK (type IN ('Tool', 'EquipmentConstruction')),
+    name VARCHAR(30) NOT NULL,
+    category VARCHAR(30) NOT NULL,
+    date_register DATE NOT NULL,
+    price_day DOUBLE PRECISION NOT NULL,
+    description TEXT NOT NULL,
+    status VARCHAR(100) CHECK (status IN ('Available', 'Rented', 'Damaged', 'Under maintenance')),
+    id_user_supplier BIGINT NOT NULL REFERENCES Users(id)
 );
 
 CREATE TABLE Reservations (
-    id SERIAL PRIMARY KEY,
-    start_date DATE,
-    end_date DATE,
-    request_date DATE,
-    status VARCHAR(100) CHECK (status IN ('Pending', 'Approved', 'Canceled', 'Rejected', 'Completed')),
-    idUsers_client INT REFERENCES Users(id),
-    idTool_eqCons INT REFERENCES Tools_EquipmentConstruction(id)
+    id BIGSERIAL PRIMARY KEY,
+    start_date DATE NOT NULL,
+    end_date DATE NOT NULL,
+    request_date DATE NOT NULL,
+    status VARCHAR(100) NOT NULL CHECK (status IN ('Pending', 'Approved', 'Canceled', 'Rejected', 'Completed')),
+    id_user_client BIGINT NOT NULL REFERENCES Users(id)
 );
 
 CREATE TABLE Returns_Deliveries (
-    id BIGINT PRIMARY KEY,
+    id BIGSERIAL PRIMARY KEY,
     delivery_date DATE,
     return_date DATE,
     commentary TEXT,
     status VARCHAR(100) CHECK (status IN ('Good', 'Damaged', 'Missing - Broken')),
-    idReservations INT REFERENCES Reservations(id)
+    id_reservations BIGINT REFERENCES Reservations(id)
 );
 
 CREATE TABLE Payments (
-    id BIGINT PRIMARY KEY,
-    payments_method VARCHAR,
-    price_total DOUBLE PRECISION,
-    payments_date DATE,
-    status VARCHAR(100) CHECK (status IN ('Pending', 'Paid', 'Failed')),
-    idReservations INT REFERENCES Reservations(id)
+    id BIGSERIAL PRIMARY KEY,
+    payment_method VARCHAR(100) NOT NULL,
+    price_total DOUBLE PRECISION NOT NULL,
+    payment_date DATE NOT NULL,
+    status VARCHAR(100) NOT NULL CHECK (status IN ('Pending', 'Paid', 'Failed')),
+    id_reservations BIGINT NOT NULL REFERENCES Reservations(id)
 );
 
 CREATE TABLE Invoices (
-    id BIGINT PRIMARY KEY,
-    name_ToolShare VARCHAR,
-    nit VARCHAR(100),
-    address VARCHAR(100),
-    number_invoice VARCHAR,
-    cellphone VARCHAR(100),
-    registration_date DATE,
-    invoice_generation_date DATE,
-    expiration_date DATE,
-    url_signature VARCHAR(100),
-    end_total DOUBLE PRECISION,
-    idUsers_client INT REFERENCES Users(id),
-    idPayments INT REFERENCES Payments(id)
+    id BIGSERIAL PRIMARY KEY,
+    name_tool_share VARCHAR(255) NOT NULL,
+    nit VARCHAR(15) NOT NULL,
+    address VARCHAR(100) NOT NULL,
+    number_invoice VARCHAR(20) NOT NULL,
+    cellphone VARCHAR(30),
+    registration_date DATE NOT NULL,
+    invoice_generation_date DATE NOT NULL,
+    expiration_date DATE NOT NULL,
+    url_signature VARCHAR(255) NOT NULL,
+    and_total DOUBLE PRECISION NOT NULL,
+    id_client BIGINT NOT NULL REFERENCES Users(id),
+    id_payments BIGINT NOT NULL REFERENCES Payments(id)
 );
 
 CREATE TABLE Tools_Invoices (
-    id INT PRIMARY KEY,
-    unit_value DOUBLE PRECISION,
-    quantity INT,
-    totalValue DOUBLE PRECISION,
-    idTools_eqCons INT REFERENCES Tools_EquipmentConstruction(id),
-    idInvoices INT REFERENCES Invoices(id)
+    id BIGSERIAL PRIMARY KEY,
+    invoice_id BIGINT REFERENCES Invoices(id),
+    tools_id BIGINT REFERENCES Tools_EquipmentConstruction(id),
+    unit_value DOUBLE PRECISION NOT NULL,
+    quantity INT NOT NULL,
+    total_value DOUBLE PRECISION NOT NULL
 );
 
 CREATE TABLE Damage_Report (
-    id BIGINT PRIMARY KEY,
-    report_date DATE,
-    description TEXT,
+    id SERIAL PRIMARY KEY,
+    report_date DATE NOT NULL,
     solution_date DATE,
-    status VARCHAR(100) CHECK (status IN ('Pending', 'Under review', 'Resolved')),
-    idUsers_Report INT REFERENCES Users(id),
-    idTool_eqCons INT REFERENCES Tools_EquipmentConstruction(id),
-    idReservations INT REFERENCES Reservations(id)
+    description TEXT NOT NULL,
+    status VARCHAR(100) NOT NULL CHECK (status IN ('Pending', 'Under review', 'Resolved')),
+    id_users_report BIGINT NOT NULL REFERENCES Users(id),
+    id_tool_eqcons BIGINT NOT NULL REFERENCES Tools_EquipmentConstruction(id),
+    id_reservation BIGINT NOT NULL REFERENCES Reservations(id)
 );
 
 CREATE TABLE Notifications (
-    id BIGINT PRIMARY KEY,
-    message TEXT,
-    date_message DATE,
-    status VARCHAR(100) CHECK (status IN ('Payment', 'Reservation', 'Alert', 'Delivery', 'Return', 'Damage')),
-    idUsers INT REFERENCES Users(id)
+    id BIGSERIAL PRIMARY KEY,
+    message TEXT NOT NULL,
+    date_message DATE NOT NULL,
+    status VARCHAR(100) NOT NULL CHECK (status IN ('Payment', 'Reservation', 'Alert', 'Delivery', 'Return', 'Damage')),
+    id_user BIGINT NOT NULL REFERENCES Users(id)
 );
 
 CREATE TABLE Stastics (
-    id BIGINT PRIMARY KEY,
-    quantity_timesDamaged BIGINT,
-    total_income INT,
-    total_rentals INT
+    id BIGSERIAL PRIMARY KEY,
+    quantity_timesDamaged INT NOT NULL,
+    total_income INT NOT NULL,
+    total_rentals INT NOT NULL,
+    id_tools_equipment_construction BIGINT REFERENCES Tools_EquipmentConstruction(id)
 );

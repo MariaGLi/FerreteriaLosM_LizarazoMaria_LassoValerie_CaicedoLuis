@@ -23,7 +23,7 @@ public class DamageReport {
     @Column(nullable = false)
     private LocalDate report_date;
 
-    @Column(nullable = false)
+    @Column()
     private LocalDate solution_date;
 
     @Column(columnDefinition = "TEXT", nullable = false)
