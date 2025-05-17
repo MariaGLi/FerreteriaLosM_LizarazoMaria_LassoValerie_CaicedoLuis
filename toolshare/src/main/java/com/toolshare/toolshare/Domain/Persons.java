@@ -1,5 +1,6 @@
 package com.toolshare.toolshare.Domain;
 
+import java.util.Date;
 import java.time.LocalDate;
 
 import jakarta.persistence.Column;
@@ -29,7 +30,7 @@ public class Persons {
     private String email;
 
     @Column(nullable = false)
-    private LocalDate date_register;
+    private Date date_register;
 
     @OneToOne
     @JoinColumn(nullable = false)
@@ -38,7 +39,7 @@ public class Persons {
     public Persons() {
     }
 
-    public Persons(Long id, String name, String last_name, String cellphone, String email, LocalDate date_register,
+    public Persons(Long id, String name, String last_name, String cellphone, String email, Date date_register,
             Users id_user) {
         this.id = id;
         this.name = name;
@@ -89,11 +90,11 @@ public class Persons {
         this.email = email;
     }
 
-    public LocalDate getDate_register() {
+    public Date getDate_register() {
         return date_register;
     }
 
-    public void setDate_register(LocalDate date_register) {
+    public void setDate_register(Date date_register) {
         this.date_register = date_register;
     }
 

@@ -1,5 +1,7 @@
 package com.toolshare.toolshare.Infraestructure.Repository.impl;
 
+import java.util.Date;
+
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -8,11 +10,12 @@ import org.springframework.stereotype.Service;
 
 import com.toolshare.toolshare.Application.Service.AuthService;
 import com.toolshare.toolshare.Application.Service.JwtService;
+import com.toolshare.toolshare.Domain.Persons;
 import com.toolshare.toolshare.Domain.Users;
-import com.toolshare.toolshare.Domain.Enum.TypeUsers;
 import com.toolshare.toolshare.Domain.request.AuthResponse;
 import com.toolshare.toolshare.Domain.request.LoginRequest;
 import com.toolshare.toolshare.Domain.request.RegisterUserRequest;
+import com.toolshare.toolshare.Infraestructure.Repository.PersonRepository;
 import com.toolshare.toolshare.Infraestructure.Repository.UsersRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -22,6 +25,7 @@ import lombok.RequiredArgsConstructor;
 public class AuthServiceImpl implements AuthService {
 
     private final UsersRepository usersRepository;
+    private final PersonRepository personRepository;
     private final JwtService jwtService;
     private final PasswordEncoder passwordEncoder;
     private final AuthenticationManager authenticationManager;
@@ -45,6 +49,18 @@ public class AuthServiceImpl implements AuthService {
         .build();
 
         usersRepository.save(user);
+
+        Users newUser = usersRepository.findByUsername(request.getUsername()).get();
+
+        Persons person = new Persons();
+        person.setName(request.getName());
+        person.setLast_name(request.getLastname());
+        person.setCellphone(request.getCellphone());
+        person.setEmail(request.getEmail());
+        person.setDate_register(new Date());
+        person.setId_user(newUser);
+
+        personRepository.save(person);
 
         return AuthResponse.builder()
         .token(jwtService.getToken(user))
