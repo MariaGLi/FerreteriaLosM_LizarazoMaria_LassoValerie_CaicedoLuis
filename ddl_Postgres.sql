@@ -36,12 +36,6 @@ CREATE TABLE Reservations (
     id_user_client BIGINT NOT NULL REFERENCES Users(id)
 );
 
-CREATE TABLE Reservations_ToolsEquipmentConstructions (
-    id_reservation BIGINT NOT NULL REFERENCES Reservations(id),
-    id_tools_equipment_construction BIGINT NOT NULL REFERENCES Tools_EquipmentConstruction(id),
-    PRIMARY KEY (id_reservation, id_tools_equipment_construction)
-);
-
 CREATE TABLE Returns_Deliveries (
     id BIGSERIAL PRIMARY KEY,
     delivery_date DATE,
