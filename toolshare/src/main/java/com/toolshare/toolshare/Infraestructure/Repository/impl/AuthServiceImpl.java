@@ -12,9 +12,9 @@ import com.toolshare.toolshare.Application.Service.AuthService;
 import com.toolshare.toolshare.Application.Service.JwtService;
 import com.toolshare.toolshare.Domain.Persons;
 import com.toolshare.toolshare.Domain.Users;
-import com.toolshare.toolshare.Domain.request.AuthResponse;
 import com.toolshare.toolshare.Domain.request.LoginRequest;
 import com.toolshare.toolshare.Domain.request.RegisterUserRequest;
+import com.toolshare.toolshare.Domain.response.AuthResponse;
 import com.toolshare.toolshare.Infraestructure.Repository.PersonRepository;
 import com.toolshare.toolshare.Infraestructure.Repository.UsersRepository;
 
@@ -35,8 +35,10 @@ public class AuthServiceImpl implements AuthService {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
         UserDetails user = usersRepository.findByUsername(request.getUsername()).orElseThrow();
         String token = jwtService.getToken(user);
+        String type = user.getAuthorities().toString();
         return AuthResponse.builder()
         .token(token)
+        .type(type.substring(6,type.length()-1))
         .build();
     }
 

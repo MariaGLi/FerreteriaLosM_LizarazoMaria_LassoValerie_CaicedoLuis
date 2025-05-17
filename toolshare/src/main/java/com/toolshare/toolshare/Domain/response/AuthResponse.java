@@ -1,4 +1,4 @@
-package com.toolshare.toolshare.Domain.request;
+package com.toolshare.toolshare.Domain.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,4 +11,5 @@ import lombok.NoArgsConstructor;
 @Builder
 public class AuthResponse {
     private String token;
+    private String type;
 }

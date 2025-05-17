@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.toolshare.toolshare.Application.Service.AuthService;
-import com.toolshare.toolshare.Domain.request.AuthResponse;
 import com.toolshare.toolshare.Domain.request.LoginRequest;
 import com.toolshare.toolshare.Domain.request.RegisterUserRequest;
+import com.toolshare.toolshare.Domain.response.AuthResponse;
 
 import lombok.RequiredArgsConstructor;
 

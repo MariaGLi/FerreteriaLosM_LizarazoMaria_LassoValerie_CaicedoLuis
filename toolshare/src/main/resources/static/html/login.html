@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../css/register.css">
+    <link rel="stylesheet" href="../css/login.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,29 +14,19 @@
 <body>
     <div class="content">
         <form action="" id="form">
-            <div class="contRegister">
+            <div class="contLogin">
                 <img class="logo" src="../images/logoFerreteria.png" alt="">
-                <div class="names">
-                    <input class="name" type="text" placeholder="Name" required>
-                    <input class="lastname" type="text" placeholder="Last Name" required>
-                </div>
-                <div class="input">
-                    <input class="cellphone" type="text" placeholder="Cellphone" required><i class='bx  bxs-phone'  ></i> 
-                </div>
-                <div class="input">
-                    <input class="email" type="text" placeholder="Email" required><i class='bx  bxs-envelope'  ></i> 
-                </div>
                 <div class="input space">
                     <input class="username" type="text" placeholder="User Name" required><i class='bx bxs-user'></i>
                 </div>
                 <div class="input">
                     <input class="password" type="password" placeholder="password" required><i class='bx  bxs-lock'  ></i> 
                 </div>
-                <input class="submit" type="submit" value="Create Account" onclick="register()">
-                <p class="login">Already have an Account / <a href="./login.html">Login</a></p>
+                <button class="submit" onclick="login()">LOGIN</button>
+                <p class="register">Don't have an account? / <a href="./register.html">Create Account</a></p>
             </div>
         </form>
     </div>
 </body>
-<script src="../js/register.js"></script>
+ <script src="../js/login.js"></script>
 </html>
