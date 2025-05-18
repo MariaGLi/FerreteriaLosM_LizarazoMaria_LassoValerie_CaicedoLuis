@@ -12,10 +12,10 @@ CREATE TABLE Persons (
     cellphone VARCHAR(30),
     email VARCHAR(100),
     date_register DATE NOT NULL,
-    id_user BIGINT NOT NULL REFERENCES Users(id)
+    id_user_id BIGINT NOT NULL REFERENCES Users(id)
 );
 --drop tABLE Persons;
-CREATE TABLE Tools_EquipmentConstruction (
+CREATE TABLE Tools_Equipment_Construction (
     id BIGSERIAL PRIMARY KEY,
     type VARCHAR(100) NOT NULL CHECK (type IN ('Tool', 'EquipmentConstruction')),
     name VARCHAR(30) NOT NULL,
@@ -23,8 +23,8 @@ CREATE TABLE Tools_EquipmentConstruction (
     date_register DATE NOT NULL,
     price_day DOUBLE PRECISION NOT NULL,
     description TEXT NOT NULL,
-    status VARCHAR(100) CHECK (status IN ('Available', 'Rented', 'Damaged', 'Under maintenance')),
-    id_user_supplier BIGINT NOT NULL REFERENCES Users(id)
+    status VARCHAR(100) CHECK (status IN ('Available', 'Rented', 'Damaged', 'Maintenance')),
+    id_user_supplier_id BIGINT NOT NULL REFERENCES Users(id)
 );
 
 CREATE TABLE Reservations (
@@ -41,8 +41,8 @@ CREATE TABLE Returns_Deliveries (
     delivery_date DATE,
     return_date DATE,
     commentary TEXT,
-    status VARCHAR(100) CHECK (status IN ('Good', 'Damaged', 'Missing - Broken')),
-    id_reservations BIGINT REFERENCES Reservations(id)
+    status VARCHAR(100) CHECK (status IN ('Good', 'Damaged', 'MissingFaulty')),
+    id_reservations_id BIGINT REFERENCES Reservations(id)
 );
 
 CREATE TABLE Payments (
@@ -51,13 +51,13 @@ CREATE TABLE Payments (
     price_total DOUBLE PRECISION NOT NULL,
     payment_date DATE NOT NULL,
     status VARCHAR(100) NOT NULL CHECK (status IN ('Pending', 'Paid', 'Failed')),
-    id_reservations BIGINT NOT NULL REFERENCES Reservations(id)
+    id_reservations_id BIGINT NOT NULL REFERENCES Reservations(id)
 );
 
 CREATE TABLE Invoices (
     id BIGSERIAL PRIMARY KEY,
     name_tool_share VARCHAR(255) NOT NULL,
-    nit VARCHAR(15) NOT NULL,
+    nit VARCHAR(8) NOT NULL,
     address VARCHAR(100) NOT NULL,
     number_invoice VARCHAR(20) NOT NULL,
     cellphone VARCHAR(30),
@@ -66,8 +66,8 @@ CREATE TABLE Invoices (
     expiration_date DATE NOT NULL,
     url_signature VARCHAR(255) NOT NULL,
     and_total DOUBLE PRECISION NOT NULL,
-    id_client BIGINT NOT NULL REFERENCES Users(id),
-    id_payments BIGINT NOT NULL REFERENCES Payments(id)
+    id_client_id BIGINT NOT NULL REFERENCES Users(id),
+    id_payments_id BIGINT NOT NULL REFERENCES Payments(id)
 );
 
 CREATE TABLE Tools_Invoices (
@@ -84,10 +84,10 @@ CREATE TABLE Damage_Report (
     report_date DATE NOT NULL,
     solution_date DATE,
     description TEXT NOT NULL,
-    status VARCHAR(100) NOT NULL CHECK (status IN ('Pending', 'Under review', 'Resolved')),
-    id_users_report BIGINT NOT NULL REFERENCES Users(id),
-    id_tool_eqcons BIGINT NOT NULL REFERENCES Tools_EquipmentConstruction(id),
-    id_reservation BIGINT NOT NULL REFERENCES Reservations(id)
+    status VARCHAR(100) NOT NULL CHECK (status IN ('Pending', 'Under', 'Solved')),
+    id_users_report_id BIGINT NOT NULL REFERENCES Users(id),
+    id_tool_eqcons_id BIGINT NOT NULL REFERENCES Tools_EquipmentConstruction(id),
+    id_reservation_id BIGINT NOT NULL REFERENCES Reservations(id)
 );
 
 CREATE TABLE Notifications (
@@ -95,13 +95,13 @@ CREATE TABLE Notifications (
     message TEXT NOT NULL,
     date_message DATE NOT NULL,
     status VARCHAR(100) NOT NULL CHECK (status IN ('Payment', 'Reservation', 'Alert', 'Delivery', 'Return', 'Damage')),
-    id_user BIGINT NOT NULL REFERENCES Users(id)
+    id_user_id BIGINT NOT NULL REFERENCES Users(id)
 );
 
 CREATE TABLE Stastics (
     id BIGSERIAL PRIMARY KEY,
-    quantity_timesDamaged INT NOT NULL,
+    quantity_times_damaged INT NOT NULL,
     total_income INT NOT NULL,
     total_rentals INT NOT NULL,
-    id_tools_equipment_construction BIGINT REFERENCES Tools_EquipmentConstruction(id)
+    id_tools_equipment_construction_id BIGINT REFERENCES Tools_EquipmentConstruction(id)
 );
