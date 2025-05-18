@@ -17,9 +17,9 @@
             <div class="options">
                 <p class="title">Everything to build <br> and repair</p>
                 <div class="buttons">
-                    <button class="panel">Control panel</button>
-                    <button class="supervision">Supervision</button>
-                    <button class="reports">Reports</button>
+                    <button class="menuBtn" id="btnActive">Control panel</button>
+                    <button class="menuBtn">Supervision</button>
+                    <button class="menuBtn">Reports</button>
                 </div>
             </div>
             <div class="options2">
@@ -28,96 +28,13 @@
         </div>
         <div class="content">
             <div class="filters">
-                <button class="supplier">Supplier</button>
-                <button class="customer">Customer</button>
+                <button id="filterBtn" class="select" onclick="getAllUsers()">All</button>
+                <button id="filterBtn" onclick="getAllUsersFilter('supplier')">Supplier</button>
+                <button id="filterBtn" onclick="getAllUsersFilter('customer')">Customer</button>
             </div>
             <h2>Users</h2>
             <div class="users">
-                <div class="user">
-                    <img src="../img/logoM3-removebg-preview.png" alt="">
-                    <div class="name">Luis Miguel Caicedo Bermon</div>
-                    <button class="info">Info</button>
-                </div>
-                <div class="user">
-                    <img src="../img/logoM3-removebg-preview.png" alt="">
-                    <div class="name">Luis Miguel Caicedo Bermon</div>
-                    <button class="info">Info</button>
-                </div>
-                <div class="user">
-                    <img src="../img/logoM3-removebg-preview.png" alt="">
-                    <div class="name">Luis Miguel Caicedo Bermon</div>
-                    <button class="info">Info</button>
-                </div>
-                <div class="user">
-                    <img src="../img/logoM3-removebg-preview.png" alt="">
-                    <div class="name">Luis Miguel Caicedo Bermon</div>
-                    <button class="info">Info</button>
-                </div>
-                <div class="user">
-                    <img src="../img/logoM3-removebg-preview.png" alt="">
-                    <div class="name">Luis Miguel Caicedo Bermon</div>
-                    <button class="info">Info</button>
-                </div>
-                <div class="user">
-                    <img src="../img/logoM3-removebg-preview.png" alt="">
-                    <div class="name">Luis Miguel Caicedo Bermon</div>
-                    <button class="info">Info</button>
-                </div>
-                <div class="user">
-                    <img src="../img/logoM3-removebg-preview.png" alt="">
-                    <div class="name">Luis Miguel Caicedo Bermon</div>
-                    <button class="info">Info</button>
-                </div>
-                <div class="user">
-                    <img src="../img/logoM3-removebg-preview.png" alt="">
-                    <div class="name">Luis Miguel Caicedo Bermon</div>
-                    <button class="info">Info</button>
-                </div>
-                <div class="user">
-                    <img src="../img/logoM3-removebg-preview.png" alt="">
-                    <div class="name">Luis Miguel Caicedo Bermon</div>
-                    <button class="info">Info</button>
-                </div>
-                <div class="user">
-                    <img src="../img/logoM3-removebg-preview.png" alt="">
-                    <div class="name">Luis Miguel Caicedo Bermon</div>
-                    <button class="info">Info</button>
-                </div>
-                <div class="user">
-                    <img src="../img/logoM3-removebg-preview.png" alt="">
-                    <div class="name">Luis Miguel Caicedo Bermon</div>
-                    <button class="info">Info</button>
-                </div>
-                <div class="user">
-                    <img src="../img/logoM3-removebg-preview.png" alt="">
-                    <div class="name">Luis Miguel Caicedo Bermon</div>
-                    <button class="info">Info</button>
-                </div>
-                <div class="user">
-                    <img src="../img/logoM3-removebg-preview.png" alt="">
-                    <div class="name">Luis Miguel Caicedo Bermon</div>
-                    <button class="info">Info</button>
-                </div>
-                <div class="user">
-                    <img src="../img/logoM3-removebg-preview.png" alt="">
-                    <div class="name">Luis Miguel Caicedo Bermon</div>
-                    <button class="info">Info</button>
-                </div>
-                <div class="user">
-                    <img src="../img/logoM3-removebg-preview.png" alt="">
-                    <div class="name">Luis Miguel Caicedo Bermon</div>
-                    <button class="info">Info</button>
-                </div>
-                <div class="user">
-                    <img src="../img/logoM3-removebg-preview.png" alt="">
-                    <div class="name">Luis Miguel Caicedo Bermon</div>
-                    <button class="info">Info</button>
-                </div>
-                <div class="user">
-                    <img src="../img/logoM3-removebg-preview.png" alt="">
-                    <div class="name">Luis Miguel Caicedo Bermon</div>
-                    <button class="info">Info</button>
-                </div>
+                
             </div>
         </div>
     </div>

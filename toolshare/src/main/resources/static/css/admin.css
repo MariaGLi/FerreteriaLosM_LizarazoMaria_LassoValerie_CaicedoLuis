@@ -37,7 +37,7 @@ body{
     flex-direction: row;
     gap: 7px;
 }
-.menu button{
+.menu .menuBtn{
     font-family: "Kanit", sans-serif;
     background-color: #D67929;
     border: none;
@@ -68,7 +68,6 @@ body{
     padding: 0.4rem 0.8rem;
     border: none;
     font-family: "Kanit", sans-serif;
-    color: #383733;
     border-radius: 5px;
     font-size: 1rem;
 }
@@ -113,6 +112,13 @@ h2{
     font-size: 0.8rem;
     width: 80px;
     margin-left: calc(50% - 40px);
+}
+.select{
+    color: #D67929;
+}
+#btnActive{
+    color:#535353;
+    background-color: #D9D9D9;
 }
 
 @media only screen and (max-width: 1120px){
