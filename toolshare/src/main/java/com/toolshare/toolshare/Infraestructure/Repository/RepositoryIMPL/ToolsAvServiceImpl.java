@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.toolshare.toolshare.Application.Service.ToolsAvService;
 import com.toolshare.toolshare.Domain.ToolsEquipmentConstruction;
+import com.toolshare.toolshare.Domain.Enum.StatusToolsEC;
 import com.toolshare.toolshare.Infraestructure.Repository.ToolsECRepository;
 
 @Service
@@ -19,7 +20,7 @@ public class ToolsAvServiceImpl implements ToolsAvService{
 
     @Override
     public List<ToolsEquipmentConstruction> getAvailableTools() {
-        List<ToolsEquipmentConstruction> toolsAvailable = toolsECRepository.findAll();
+        List<ToolsEquipmentConstruction> toolsAvailable = toolsECRepository.findByStatus(StatusToolsEC.Available);
         
         return toolsAvailable;
     }
