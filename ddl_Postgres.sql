@@ -41,7 +41,7 @@ CREATE TABLE Returns_Deliveries (
     delivery_date DATE,
     return_date DATE,
     commentary TEXT,
-    status VARCHAR(100) CHECK (status IN ('Good', 'Damaged', 'Missing - Broken')),
+    status VARCHAR(100) CHECK (status IN ('Good', 'Damaged', 'Missing_Faulty')),
     id_reservations BIGINT REFERENCES Reservations(id)
 );
 
@@ -94,7 +94,7 @@ CREATE TABLE Notifications (
     id BIGSERIAL PRIMARY KEY,
     message TEXT NOT NULL,
     date_message DATE NOT NULL,
-    status VARCHAR(100) NOT NULL CHECK (status IN ('Payment', 'Reservation', 'Alert', 'Delivery', 'Return', 'Damage')),
+    status VARCHAR(100) NOT NULL CHECK (status IN ('Payments', 'Reservations', 'Alerts', 'Returns')),
     id_user BIGINT NOT NULL REFERENCES Users(id)
 );
 

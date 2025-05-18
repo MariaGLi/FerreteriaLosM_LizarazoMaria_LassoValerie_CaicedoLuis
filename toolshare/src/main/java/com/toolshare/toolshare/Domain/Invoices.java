@@ -27,7 +27,7 @@ public class Invoices {
     @Column(nullable = false)
     private String name_tool_share;
 
-    @Column(length = 8 ,nullable = false)
+    @Column(length = 15 ,nullable = false)
     private String nit;
 
     @Column(nullable = false)
