@@ -3,7 +3,7 @@ package com.toolshare.toolshare.Domain.Enum;
 public enum StatusDamageReport {
     Pending("Pending"),
     Under("Under"),
-    Solved("Solved");
+    Resolved("Resolved");
 
     private String status;
     StatusDamageReport(String status) {

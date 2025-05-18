@@ -1,8 +1,8 @@
 package com.toolshare.toolshare.Domain.Enum;
 
 public enum TypeToolsEC {
-    Tools("Tool"),
-    EquipmentConstructions("EquipmentConstructions");
+    Tool("Tool"),
+    EquipmentConstruction("EquipmentConstructions");
 
     private String type;
 

@@ -1,10 +1,10 @@
 package com.toolshare.toolshare.Domain.Enum;
 
 public enum StatusNotifications {
-    Payments("Payment"),
-    Reservations("Reservation"),
-    Returns("Return"),
-    Alerts("Alert");
+    Payment("Payment"),
+    Reservation("Reservation"),
+    Return("Return"),
+    Alert("Alert");
 
     private String status;
 

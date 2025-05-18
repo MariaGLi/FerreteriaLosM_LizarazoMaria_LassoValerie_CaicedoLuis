@@ -3,7 +3,7 @@ package com.toolshare.toolshare.Domain.Enum;
 public enum StatusReturnsD {
     Good("Good"),
     Damaged("Damaged"),
-    Missing_Faulty("Missing_Faulty");
+    MissingFaulty("Missing_Faulty");
 
     private String status;
     StatusReturnsD(String status) {

@@ -24,6 +24,7 @@ INSERT INTO Users (id, username, password, type) VALUES
 
 --Person
 INSERT INTO Persons (id, name, last_name, cellphone, email, date_register, id_user_id) VALUES
+INSERT INTO Persons (id, name, last_name, cellphone, email, date_register, id_user_id) VALUES
 (1, 'Luis Miguel', 'Caicedo', '3124567890', 'luis10@gmail.com', '2020-05-15', 1),
 (2, 'Valerie', 'Lasso', '3568741026', 'michellasso@gmail.com', '2023-05-15', 2),
 (3, 'María', 'Lizarazo', '3125478001', 'mgl27@gmail.com', '2022-05-15', 3),
@@ -72,6 +73,7 @@ INSERT INTO Tools_Equipment_Construction (id, type, name, category, date_registe
 
 --Reservations
 INSERT INTO Reservations (id, start_date, end_date, request_date, status, id_user_client_id) VALUES  
+INSERT INTO Reservations (id, start_date, end_date, request_date, status, id_user_client_id) VALUES  
 (1, '2023-06-01', '2023-06-03', '2023-05-25', 'Approved', 5),
 (2, '2023-06-10', '2023-06-12', '2023-06-01', 'Completed', 6),
 (3, '2023-07-05', '2023-07-07', '2023-06-28', 'Pending', 7),
@@ -95,6 +97,7 @@ INSERT INTO Reservations (id, start_date, end_date, request_date, status, id_use
 
 --Returns_Deliveries
 INSERT INTO Returns_Deliveries (id, delivery_date, return_date, commentary, status, id_reservations_id) VALUES 
+INSERT INTO Returns_Deliveries (id, delivery_date, return_date, commentary, status, id_reservations_id) VALUES 
 (1, '2023-06-01', '2023-06-03', 'Devuelto en buen estado.', 'Good', 1),
 (2, '2023-06-10', '2023-06-12', 'Herramienta funcional, sin novedades.', 'Good', 2),
 (3, '2023-07-05', '2023-07-07', 'Cliente reporta maletín roto.', 'Damaged', 3),
@@ -117,6 +120,7 @@ INSERT INTO Returns_Deliveries (id, delivery_date, return_date, commentary, stat
 (20, '2024-03-10', '2024-03-14', 'Accesorio dañado al regresar.', 'Damaged', 20);
 
 --Payments
+INSERT INTO Payments (id, payment_method, price_total, payment_date, status, id_reservations_id) VALUES
 INSERT INTO Payments (id, payment_method, price_total, payment_date, status, id_reservations_id) VALUES
 (1, 'Bancolombia', 550000.00, '2023-05-26', 'Paid', 1),
 (2, 'Davivienda', 1100000.00, '2023-06-02', 'Paid', 2),
@@ -232,6 +236,7 @@ INSERT INTO Notifications (id, message, date_message, status, id_user_id) VALUES
 (20, 'Notificación de mantenimiento del sistema.', '2024-02-15', 'Alerts', 8);
 
 --Stastics
+INSERT INTO Stastics (id, quantity_times_damaged, total_income, total_rentals, id_tools_equipment_construction_id) VALUES
 INSERT INTO Stastics (id, quantity_times_damaged, total_income, total_rentals, id_tools_equipment_construction_id) VALUES
 (1, 2, 1800000, 15, 1),
 (2, 0, 850000, 7, 2),

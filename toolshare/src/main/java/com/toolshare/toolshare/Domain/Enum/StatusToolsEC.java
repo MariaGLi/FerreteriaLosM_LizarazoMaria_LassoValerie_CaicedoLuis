@@ -4,7 +4,7 @@ public enum StatusToolsEC {
     Available("Available"),
     Rented("Rented"),
     Damaged("Damaged"),
-    Machine_maintenance("Maintenance");
+    Maintenance("Maintenance");
 
     private String status;
 

@@ -31,7 +31,7 @@ public class Invoices {
     private String nit;
 
     @Column(nullable = false)
-    private String addres;
+    private String address;
 
     @Column(nullable = false, length = 20)
     private String number_invoice;
@@ -68,14 +68,14 @@ public class Invoices {
     public Invoices() {
     }
 
-    public Invoices(Long id, String name_tool_share, String nit, String addres, String number_invoice, String cellphone,
+    public Invoices(Long id, String name_tool_share, String nit, String address, String number_invoice, String cellphone,
             LocalDate registration_date, LocalDate invoice_generation_date, LocalDate expiration_date,
             String url_signature, double and_total, Users id_client, Payments id_payments,
             List<ToolsInvoices> tool_invoice_list) {
         this.id = id;
         this.name_tool_share = name_tool_share;
         this.nit = nit;
-        this.addres = addres;
+        this.address = address;
         this.number_invoice = number_invoice;
         this.cellphone = cellphone;
         this.registration_date = registration_date;
@@ -112,12 +112,12 @@ public class Invoices {
         this.nit = nit;
     }
 
-    public String getAddres() {
-        return addres;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAddres(String addres) {
-        this.addres = addres;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getNumber_invoice() {
