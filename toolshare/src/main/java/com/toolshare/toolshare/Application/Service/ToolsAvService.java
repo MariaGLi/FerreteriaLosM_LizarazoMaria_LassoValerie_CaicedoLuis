@@ -7,4 +7,5 @@ import com.toolshare.toolshare.Domain.ToolsEquipmentConstruction;
 
 public interface ToolsAvService {
     List<ToolsEquipmentConstruction> getAvailableTools();
+    List<ToolsEquipmentConstruction> getPriceTools();
 }

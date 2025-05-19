@@ -24,4 +24,9 @@ public class ToolsAvServiceImpl implements ToolsAvService{
         
         return toolsAvailable;
     }
+
+    @Override
+    public List<ToolsEquipmentConstruction> getPriceTools() {
+        return toolsECRepository.findAllByOrderByPriceDayAsc();
+    }
 }

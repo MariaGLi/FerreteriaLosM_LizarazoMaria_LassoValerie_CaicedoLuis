@@ -37,7 +37,7 @@ public class InventoryToolsImpl implements InventoryToolsService{
         tool.setName(dto.getName());
         tool.setCategory(dto.getCategory());
         tool.setDate_register(dto.getDateRegister());
-        tool.setPrice_day(dto.getPriceDay());
+        tool.setPriceDay(dto.getPriceDay());
         tool.setDescription(dto.getDescription());
         tool.setType(dto.getType());
         tool.setStatus(dto.getStatus());
@@ -68,7 +68,7 @@ public class InventoryToolsImpl implements InventoryToolsService{
             throw new RuntimeException("Enter the id");
         } 
         ToolsEquipmentConstruction toolExist= findTool.get();
-        toolExist.setPrice_day(priceDay);
+        toolExist.setPriceDay(priceDay);
         toolExist.setStatus(statusS);
 
         return repository.save(toolExist);

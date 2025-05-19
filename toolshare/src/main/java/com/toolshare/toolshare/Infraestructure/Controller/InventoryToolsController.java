@@ -42,7 +42,7 @@ public class InventoryToolsController {
     public ResponseEntity<ToolsEquipmentConstruction> editTool(@PathVariable (name = "id") Long id, @RequestBody ToolsEquipmentConstruction editTool) {
         
         try{
-            ToolsEquipmentConstruction tool= SIMservice.updateTool(id,editTool.getPrice_day(), editTool.getStatus());
+            ToolsEquipmentConstruction tool= SIMservice.updateTool(id,editTool.getPriceDay(), editTool.getStatus());
             return ResponseEntity.ok(tool);
             
         } catch(RuntimeException e){

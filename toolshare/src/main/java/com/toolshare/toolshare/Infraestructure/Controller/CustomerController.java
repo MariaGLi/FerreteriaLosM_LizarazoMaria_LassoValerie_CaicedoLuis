@@ -25,4 +25,10 @@ public class CustomerController {
     public List<ToolsEquipmentConstruction> getAvailableTools () {
         return toolsAvService.getAvailableTools();
     }
+
+    @GetMapping("/priceTools")
+    public List<ToolsEquipmentConstruction> getToolsByPriceAsc() {
+        return toolsAvService.getPriceTools();
+    }
+    
 }

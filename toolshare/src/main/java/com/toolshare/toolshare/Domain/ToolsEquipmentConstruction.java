@@ -39,8 +39,9 @@ public class ToolsEquipmentConstruction {
     @Column(nullable = false)
     private LocalDate date_register;
 
-    @Column(nullable = false)
-    private Double price_day;
+    @Column(name = "price_day", nullable = false)
+    private Double priceDay;
+
 
     @Column(nullable = false, columnDefinition = "TEXT")
     private String description;
@@ -66,14 +67,14 @@ public class ToolsEquipmentConstruction {
     }
 
     public ToolsEquipmentConstruction(Long id, TypeToolsEC type, String name, String category, LocalDate date_register,
-            Double price_day, String description, StatusToolsEC status, Users id_user_supplier,
+            Double priceday, String description, StatusToolsEC status, Users id_user_supplier,
             List<Reservations> reservations_list, List<ToolsInvoices> tools_invoices_list) {
         this.id = id;
         this.type = type;
         this.name = name;
         this.category = category;
         this.date_register = date_register;
-        this.price_day = price_day;
+        this.priceDay = priceday;
         this.description = description;
         this.status = status;
         this.id_user_supplier = id_user_supplier;
@@ -121,12 +122,12 @@ public class ToolsEquipmentConstruction {
         this.date_register = date_register;
     }
 
-    public Double getPrice_day() {
-        return price_day;
+    public Double getPriceDay() {
+        return priceDay;
     }
 
-    public void setPrice_day(Double price_day) {
-        this.price_day = price_day;
+    public void setPriceDay(Double priceDay) {
+        this.priceDay = priceDay;
     }
 
     public String getDescription() {
@@ -168,7 +169,4 @@ public class ToolsEquipmentConstruction {
     public void setTools_invoices_list(List<ToolsInvoices> tools_invoices_list) {
         this.tools_invoices_list = tools_invoices_list;
     }
-    
-    
-
 }
