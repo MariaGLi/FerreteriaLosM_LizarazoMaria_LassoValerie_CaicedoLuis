@@ -16,5 +16,4 @@ public enum StatusReservations {
     public String getStatus() {
         return status;
     }
-
 }
