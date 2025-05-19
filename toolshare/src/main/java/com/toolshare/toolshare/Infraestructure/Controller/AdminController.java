@@ -4,11 +4,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.toolshare.toolshare.Application.Service.AdminReservationService;
 import com.toolshare.toolshare.Application.Service.AdminToolsService;
 import com.toolshare.toolshare.Application.Service.PersonService;
-import com.toolshare.toolshare.Domain.Persons;
-import com.toolshare.toolshare.Domain.Reservations;
 import com.toolshare.toolshare.Domain.response.PersonResponse;
+import com.toolshare.toolshare.Domain.response.RentalHistoryResponse;
 import com.toolshare.toolshare.Domain.response.StatusToolsResponse;
 
 import lombok.RequiredArgsConstructor;
@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class AdminController {
     private final PersonService personService;
     private final AdminToolsService adminToolsService;
+    private final AdminReservationService adminReservationService;
 
     @PostMapping("/users")
     public ResponseEntity<List<PersonResponse>> getUsers(@RequestParam(required = false)String role) {
@@ -43,4 +44,11 @@ public class AdminController {
     public ResponseEntity<List<StatusToolsResponse>> getStateTools() {
         return ResponseEntity.ok(adminToolsService.findStatusTools());
     }
+
+    @GetMapping("/rentalHistory")
+    public ResponseEntity<List<RentalHistoryResponse>> getRentalHistoryResponse() {
+        return ResponseEntity.ok(adminReservationService.getRentalHistory());
+    }
+    
+
 }

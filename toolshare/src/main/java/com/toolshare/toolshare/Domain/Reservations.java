@@ -48,12 +48,12 @@ public class Reservations {
     @ManyToOne
     @JsonIgnore
     @JoinColumn(nullable = false)
-    private Users id_user_client;
+    private Persons id_user_client;
 
     public Reservations(){}
 
     public Reservations(Long id, LocalDate start_date, LocalDate end_date, LocalDate request_date,
-            StatusReservations status, List<ToolsEquipmentConstruction> toolsECList, Users id_user_client) {
+            StatusReservations status, List<ToolsEquipmentConstruction> toolsECList, Persons id_user_client) {
         this.id = id;
         this.start_date = start_date;
         this.end_date = end_date;
@@ -111,11 +111,11 @@ public class Reservations {
         this.toolsECList = toolsECList;
     }
 
-    public Users getId_user_client() {
+    public Persons getId_user_client() {
         return id_user_client;
     }
 
-    public void setId_user_client(Users id_user_client) {
+    public void setId_user_client(Persons id_user_client) {
         this.id_user_client = id_user_client;
     }
 
