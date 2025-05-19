@@ -30,6 +30,7 @@ public class ReturnsImpl implements ReturnsService{
         returnD.setCommentary(dto.getCommentary());
         returnD.setReturn_date(dto.getReturnDate() != null ? dto.getReturnDate() : LocalDate.now());
         returnD.setStatus(dto.getStatus());
+        returnD.setDelivery_date(LocalDate.now());
         return returnRepository.save(returnD);
     }
 

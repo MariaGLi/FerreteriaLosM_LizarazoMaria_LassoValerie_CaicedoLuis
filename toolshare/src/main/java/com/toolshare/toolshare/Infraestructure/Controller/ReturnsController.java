@@ -1,6 +1,7 @@
 package com.toolshare.toolshare.Infraestructure.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,7 +25,7 @@ public class ReturnsController {
     @PostMapping("/add")
     public ResponseEntity<ReturnsDeliveries> addNewReturn(@RequestBody ReturnsDeliveriesDto deliveriesDto) {
         ReturnsDeliveries rDeliveries= returnsService.acceptReturn(deliveriesDto);
-        return ResponseEntity.ok(rDeliveries);
+        return new ResponseEntity<>(rDeliveries, HttpStatus.CREATED);
     }
     
     

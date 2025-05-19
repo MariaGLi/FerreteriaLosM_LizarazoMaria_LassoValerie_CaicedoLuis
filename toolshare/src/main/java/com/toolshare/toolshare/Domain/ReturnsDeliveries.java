@@ -2,6 +2,7 @@ package com.toolshare.toolshare.Domain;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.toolshare.toolshare.Domain.Enum.StatusReturnsD;
 
 import jakarta.persistence.Column;
@@ -30,6 +31,7 @@ public class ReturnsDeliveries {
     private StatusReturnsD status;
 
     @OneToOne
+    @JsonIgnore
     private Reservations id_reservations;
 
     public ReturnsDeliveries() {

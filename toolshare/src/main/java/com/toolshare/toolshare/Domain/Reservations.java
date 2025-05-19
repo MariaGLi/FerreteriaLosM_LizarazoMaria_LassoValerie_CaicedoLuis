@@ -3,6 +3,7 @@ package com.toolshare.toolshare.Domain;
 import java.time.LocalDate;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.toolshare.toolshare.Domain.Enum.StatusReservations;
 
 import jakarta.persistence.Column;
@@ -45,6 +46,7 @@ public class Reservations {
     private List<ToolsEquipmentConstruction> toolsECList;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(nullable = false)
     private Users id_user_client;
 
