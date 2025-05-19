@@ -23,8 +23,7 @@ INSERT INTO Users (id, username, password, type) VALUES
 --DELETE FROM Users;
 
 --Person
-INSERT INTO Persons (id, name, last_name, cellphone, email, date_register, id_user_id) VALUES
-INSERT INTO Persons (id, name, last_name, cellphone, email, date_register, id_user_id) VALUES
+INSERT INTO Persons (id, name, last_name, cellphone, email, date_register, id_user) VALUES
 (1, 'Luis Miguel', 'Caicedo', '3124567890', 'luis10@gmail.com', '2020-05-15', 1),
 (2, 'Valerie', 'Lasso', '3568741026', 'michellasso@gmail.com', '2023-05-15', 2),
 (3, 'María', 'Lizarazo', '3125478001', 'mgl27@gmail.com', '2022-05-15', 3),
@@ -47,33 +46,30 @@ INSERT INTO Persons (id, name, last_name, cellphone, email, date_register, id_us
 (20, 'Jean', 'Guerrero', '3018889900', 'jean.f@example.com', '2024-05-06', 20);
 
 --Tools_EquipmentConstruction
-INSERT INTO Tools_Equipment_Construction (id, type, name, category, date_register, price_day, description, status, id_user_supplier_id) VALUES
-(1, 'Tools', 'Taladro Bosch', 'Eléctrico', '2023-01-15', 15000.00, 'Taladro percutor 650W', 'Available', 2),
-(2, 'Tools', 'Pulidora Makita', 'Eléctrico', '2023-01-18', 18000.00, 'Pulidora angular 1200W', 'Available', 3),
-(3, 'Tools', 'Sierra Circular DeWalt', 'Eléctrico', '2023-02-10', 22000.00, 'Sierra de corte rápido', 'Rented', 4),
-(4, 'Tools', 'Martillo Demoledor', 'Eléctrico', '2023-03-01', 25000.00, 'Martillo demoledor SDS-Max', 'Available', 2),
-(5, 'Tools', 'Lijadora Orbital', 'Eléctrico', '2023-03-05', 14000.00, 'Lijadora para madera', 'Available', 3),
-(6, 'Tools', 'Compresor de aire', 'Neumático', '2023-03-22', 30000.00, 'Compresor 50L', 'Damaged', 4),
-(7, 'Tools', 'Amoladora Angular', 'Eléctrico', '2023-04-03', 16000.00, 'Amoladora 4½ pulgadas', 'Available', 2),
-(8, 'Tools', 'Rotomartillo', 'Eléctrico', '2023-04-15', 20000.00, 'Taladro con rotación y percusión', 'Available', 3),
-(9, 'Tools', 'Nivel Láser', 'Medición', '2023-05-01', 18000.00, 'Nivel de precisión', 'Available', 4),
-(10, 'Tools', 'Pistola de Calor', 'Térmico', '2023-05-10', 12000.00, 'Pistola de aire caliente', 'Available', 2);
-
-INSERT INTO Tools_Equipment_Construction (id, type, name, category, date_register, price_day, description, status, id_user_supplier_id) VALUES
-(11, 'EquipmentConstructions', 'Andamio Modular', 'Altura', '2023-06-01', 50000.00, 'Andamio de 5m altura', 'Rented', 3),
-(12, 'EquipmentConstructions', 'Mezcladora de Concreto', 'Mezclado', '2023-06-10', 60000.00, 'Tambor 320L', 'Available', 4),
-(13, 'EquipmentConstructions', 'Pluma Grúa', 'Carga', '2023-06-15', 75000.00, 'Grúa para elevación ligera', 'Available', 2),
-(14, 'EquipmentConstructions', 'Vibrador de Concreto', 'Compactación', '2023-07-01', 35000.00, 'Vibrador 220V', 'Available', 3),
-(15, 'EquipmentConstructions', 'Compactador de Placa', 'Compactación', '2023-07-12', 65000.00, 'Compactador a gasolina', 'Machine_maintenance', 4),
-(16, 'EquipmentConstructions', 'Escalera Extensible', 'Acceso', '2023-08-01', 20000.00, 'Hasta 10 metros', 'Available', 2),
-(17, 'EquipmentConstructions', 'Bomba de Agua', 'Hidráulico', '2023-08-05', 30000.00, 'Bomba sumergible 1HP', 'Available', 3),
-(18, 'EquipmentConstructions', 'Generador Eléctrico', 'Energía', '2023-08-15', 80000.00, 'Generador gasolina 3500W', 'Damaged', 4),
-(19, 'EquipmentConstructions', 'Carretilla Reforzada', 'Transporte', '2023-09-01', 10000.00, 'Carretilla metálica', 'Available', 2),
-(20, 'EquipmentConstructions', 'Cortadora de Baldosa', 'Corte', '2023-09-15', 22000.00, 'Corte cerámica y porcelanato', 'Available', 3);
+INSERT INTO Tools_EquipmentConstruction (id, type, name, category, date_register, price_day, description, status, id_user_supplier) VALUES
+(1, 'Tool', 'Taladro Bosch', 'Eléctrico', '2023-01-15', 15000.00, 'Taladro percutor 650W', 'Available', 2),
+(2, 'Tool', 'Pulidora Makita', 'Eléctrico', '2023-01-18', 18000.00, 'Pulidora angular 1200W', 'Available', 3),
+(3, 'Tool', 'Sierra Circular DeWalt', 'Eléctrico', '2023-02-10', 22000.00, 'Sierra de corte rápido', 'Rented', 4),
+(4, 'Tool', 'Martillo Demoledor', 'Eléctrico', '2023-03-01', 25000.00, 'Martillo demoledor SDS-Max', 'Available', 2),
+(5, 'Tool', 'Lijadora Orbital', 'Eléctrico', '2023-03-05', 14000.00, 'Lijadora para madera', 'Available', 3),
+(6, 'Tool', 'Compresor de aire', 'Neumático', '2023-03-22', 30000.00, 'Compresor 50L', 'Damaged', 4),
+(7, 'Tool', 'Amoladora Angular', 'Eléctrico', '2023-04-03', 16000.00, 'Amoladora 4½ pulgadas', 'Available', 2),
+(8, 'Tool', 'Rotomartillo', 'Eléctrico', '2023-04-15', 20000.00, 'Taladro con rotación y percusión', 'Available', 3),
+(9, 'Tool', 'Nivel Láser', 'Medición', '2023-05-01', 18000.00, 'Nivel de precisión', 'Available', 4),
+(10, 'Tool', 'Pistola de Calor', 'Térmico', '2023-05-10', 12000.00, 'Pistola de aire caliente', 'Available', 2),
+(11, 'EquipmentConstruction', 'Andamio Modular', 'Altura', '2023-06-01', 50000.00, 'Andamio de 5m altura', 'Rented', 3),
+(12, 'EquipmentConstruction', 'Mezcladora de Concreto', 'Mezclado', '2023-06-10', 60000.00, 'Tambor 320L', 'Available', 4),
+(13, 'EquipmentConstruction', 'Pluma Grúa', 'Carga', '2023-06-15', 75000.00, 'Grúa para elevación ligera', 'Available', 2),
+(14, 'EquipmentConstruction', 'Vibrador de Concreto', 'Compactación', '2023-07-01', 35000.00, 'Vibrador 220V', 'Available', 3),
+(15, 'EquipmentConstruction', 'Compactador de Placa', 'Compactación', '2023-07-12', 65000.00, 'Compactador a gasolina', 'Under maintenance', 4),
+(16, 'EquipmentConstruction', 'Escalera Extensible', 'Acceso', '2023-08-01', 20000.00, 'Hasta 10 metros', 'Available', 2),
+(17, 'EquipmentConstruction', 'Bomba de Agua', 'Hidráulico', '2023-08-05', 30000.00, 'Bomba sumergible 1HP', 'Available', 3),
+(18, 'EquipmentConstruction', 'Generador Eléctrico', 'Energía', '2023-08-15', 80000.00, 'Generador gasolina 3500W', 'Damaged', 4),
+(19, 'EquipmentConstruction', 'Carretilla Reforzada', 'Transporte', '2023-09-01', 10000.00, 'Carretilla metálica', 'Available', 2),
+(20, 'EquipmentConstruction', 'Cortadora de Baldosa', 'Corte', '2023-09-15', 22000.00, 'Corte cerámica y porcelanato', 'Available', 3);
 
 --Reservations
-INSERT INTO Reservations (id, start_date, end_date, request_date, status, id_user_client_id) VALUES  
-INSERT INTO Reservations (id, start_date, end_date, request_date, status, id_user_client_id) VALUES  
+INSERT INTO Reservations (id, start_date, end_date, request_date, status, id_user_client) VALUES  
 (1, '2023-06-01', '2023-06-03', '2023-05-25', 'Approved', 5),
 (2, '2023-06-10', '2023-06-12', '2023-06-01', 'Completed', 6),
 (3, '2023-07-05', '2023-07-07', '2023-06-28', 'Pending', 7),
@@ -96,12 +92,11 @@ INSERT INTO Reservations (id, start_date, end_date, request_date, status, id_use
 (20, '2024-03-10', '2024-03-14', '2024-03-05', 'Completed', 8);
 
 --Returns_Deliveries
-INSERT INTO Returns_Deliveries (id, delivery_date, return_date, commentary, status, id_reservations_id) VALUES 
-INSERT INTO Returns_Deliveries (id, delivery_date, return_date, commentary, status, id_reservations_id) VALUES 
+INSERT INTO Returns_Deliveries (id, delivery_date, return_date, commentary, status, id_reservations) VALUES 
 (1, '2023-06-01', '2023-06-03', 'Devuelto en buen estado.', 'Good', 1),
 (2, '2023-06-10', '2023-06-12', 'Herramienta funcional, sin novedades.', 'Good', 2),
 (3, '2023-07-05', '2023-07-07', 'Cliente reporta maletín roto.', 'Damaged', 3),
-(4, '2023-07-15', '2023-07-20', 'Equipo regresado sin accesorios.', 'Missing_Faulty', 4),
+(4, '2023-07-15', '2023-07-20', 'Equipo regresado sin accesorios.', 'Missing - Broken', 4),
 (5, '2023-08-01', '2023-08-03', 'Todo en orden.', 'Good', 5),
 (6, '2023-08-10', '2023-08-12', 'Herramienta rayada pero funcional.', 'Damaged', 6),
 (7, '2023-09-05', '2023-09-07', 'Equipo entregado y devuelto completo.', 'Good', 7),
@@ -110,18 +105,17 @@ INSERT INTO Returns_Deliveries (id, delivery_date, return_date, commentary, stat
 (10, '2023-10-10', '2023-10-15', 'Cliente canceló antes de usar.', 'Good', 10),
 (11, '2023-11-01', '2023-11-03', 'Entrega y devolución puntuales.', 'Good', 11),
 (12, '2023-11-10', '2023-11-12', 'Caja rota, se requiere mantenimiento.', 'Damaged', 12),
-(13, '2023-12-05', '2023-12-08', 'Cliente no regresó la extensión.', 'Missing_Faulty', 13),
+(13, '2023-12-05', '2023-12-08', 'Cliente no regresó la extensión.', 'Missing - Broken', 13),
 (14, '2023-12-15', '2023-12-20', 'Equipo devuelto mojado, requiere revisión.', 'Damaged', 14),
 (15, '2024-01-01', '2024-01-05', 'Todo entregado correctamente.', 'Good', 15),
 (16, '2024-01-10', '2024-01-12', 'Devolución después de la fecha pactada.', 'Good', 16),
 (17, '2024-02-01', '2024-02-03', 'Herramienta con leve oxidación.', 'Damaged', 17),
-(18, '2024-02-10', '2024-02-13', 'Cliente no regresó los elementos completos.', 'Missing_Faulty', 18),
+(18, '2024-02-10', '2024-02-13', 'Cliente no regresó los elementos completos.', 'Missing - Broken', 18),
 (19, '2024-03-01', '2024-03-04', 'Devolución oportuna, sin novedades.', 'Good', 19),
 (20, '2024-03-10', '2024-03-14', 'Accesorio dañado al regresar.', 'Damaged', 20);
 
 --Payments
-INSERT INTO Payments (id, payment_method, price_total, payment_date, status, id_reservations_id) VALUES
-INSERT INTO Payments (id, payment_method, price_total, payment_date, status, id_reservations_id) VALUES
+INSERT INTO Payments (id, payment_method, price_total, payment_date, status, id_reservations) VALUES
 (1, 'Bancolombia', 550000.00, '2023-05-26', 'Paid', 1),
 (2, 'Davivienda', 1100000.00, '2023-06-02', 'Paid', 2),
 (3, 'Banco de Bogotá', 660000.00, '2023-07-04', 'Pending', 3),
@@ -144,7 +138,7 @@ INSERT INTO Payments (id, payment_method, price_total, payment_date, status, id_
 (20, 'Davivienda', 1285000.00, '2024-03-06', 'Paid', 20);
 
 --Invoices
-INSERT INTO Invoices (id, name_tool_share, nit, addres, number_invoice, cellphone, registration_date, invoice_generation_date, expiration_date, url_signature, and_total, id_client_id, id_payments_id) VALUES
+INSERT INTO Invoices (id, name_tool_share, nit, address, number_invoice, cellphone, registration_date, invoice_generation_date, expiration_date, url_signature, and_total, id_client, id_payments) VALUES
 (1, 'ToolShare SAS', '900123456-7', 'Calle 123 #45-67, Bogotá', 1001, '302456780', '2023-05-01', '2023-05-26', '2023-06-26', 'https://firma.toolshare.com/1001', 550000.00, 1, 1),
 (2, 'ToolShare SAS', '900123456-7', 'Calle 123 #45-67, Bogotá', 1002, '306741026', '2023-05-01', '2023-06-02', '2023-07-02', 'https://firma.toolshare.com/1002', 1100000.00, 2, 2),
 (3, 'ToolShare SAS', '900123456-7', 'Calle 123 #45-67, Bogotá', 1003, '302547001', '2023-05-01', '2023-07-04', '2023-08-04', 'https://firma.toolshare.com/1003', 660000.00, 3, 3),
@@ -190,54 +184,53 @@ INSERT INTO Tools_Invoices (id, unit_value, quantity, total_value, tools_id, inv
 (20, 55000.00, 6, 330000.00, 20, 20);
 
 --Damage_Report
-INSERT INTO Damage_Report (id, report_date, description, solution_date, status, id_users_report_id, id_toolsec_id, id_reservation_id) VALUES
-(1, '2023-06-01', 'Herramienta presenta desgaste en la empuñadura', '2023-06-10', 'Solved', 5, 1, 1),
+INSERT INTO Damage_Report (id, report_date, description, solution_date, status, id_users_report, id_tool_eqcons, id_reservation) VALUES
+(1, '2023-06-01', 'Herramienta presenta desgaste en la empuñadura', '2023-06-10', 'Resolved', 5, 1, 1),
 (2, '2023-06-15', 'Equipo de construcción con motor ruidoso', NULL, 'Pending', 6, 2, 2),
-(3, '2023-07-03', 'Herramienta no enciende correctamente', '2023-07-12', 'Solved', 7, 3, 3),
-(4, '2023-07-18', 'Equipo con fuga de aceite', '2023-07-25', 'Under', 8, 4, 4),
+(3, '2023-07-03', 'Herramienta no enciende correctamente', '2023-07-12', 'Resolved', 7, 3, 3),
+(4, '2023-07-18', 'Equipo con fuga de aceite', '2023-07-25', 'Under review', 8, 4, 4),
 (5, '2023-08-01', 'Herramienta con cable dañado', NULL, 'Pending', 9, 5, 5),
-(6, '2023-08-10', 'Equipo de construcción con problemas en el sistema eléctrico', '2023-08-20', 'Solved', 10, 6, 6),
-(7, '2023-08-22', 'Herramienta presenta vibraciones excesivas', NULL, 'Under', 11, 7, 7),
-(8, '2023-09-05', 'Equipo con estructura doblada', '2023-09-15', 'Solved', 12, 8, 8),
+(6, '2023-08-10', 'Equipo de construcción con problemas en el sistema eléctrico', '2023-08-20', 'Resolved', 10, 6, 6),
+(7, '2023-08-22', 'Herramienta presenta vibraciones excesivas', NULL, 'Under review', 11, 7, 7),
+(8, '2023-09-05', 'Equipo con estructura doblada', '2023-09-15', 'Resolved', 12, 8, 8),
 (9, '2023-09-20', 'Herramienta con partes faltantes', NULL, 'Pending', 13, 9, 9),
 (10, '2023-10-02', 'Equipo con fallas en sistema hidráulico', '2023-10-12', 'Solved', 14, 10, 10),
 (11, '2023-10-16', 'Herramienta con botón de encendido roto', NULL, 'Pending', 15, 11, 11),
-(12, '2023-10-30', 'Equipo con desgaste en ruedas', '2023-11-10', 'Under', 16, 12, 12),
-(13, '2023-11-12', 'Herramienta con batería defectuosa', '2023-11-22', 'Solved', 17, 13, 13),
+(12, '2023-10-30', 'Equipo con desgaste en ruedas', '2023-11-10', 'Under review', 16, 12, 12),
+(13, '2023-11-12', 'Herramienta con batería defectuosa', '2023-11-22', 'Resolved', 17, 13, 13),
 (14, '2023-11-25', 'Equipo con sistema de frenado dañado', NULL, 'Pending', 18, 14, 14),
-(15, '2023-12-08', 'Herramienta con grietas en la carcasa', '2023-12-18', 'Solved', 19, 15, 15),
-(16, '2023-12-20', 'Equipo con pérdidas de presión', NULL, 'Under', 20, 16, 16),
-(17, '2024-01-05', 'Herramienta con partes desalineadas', '2024-01-15', 'Solved', 1, 17, 17),
+(15, '2023-12-08', 'Herramienta con grietas en la carcasa', '2023-12-18', 'Resolved', 19, 15, 15),
+(16, '2023-12-20', 'Equipo con pérdidas de presión', NULL, 'Under review', 20, 16, 16),
+(17, '2024-01-05', 'Herramienta con partes desalineadas', '2024-01-15', 'Resolved', 1, 17, 17),
 (18, '2024-01-18', 'Equipo con fugas de aire', NULL, 'Pending', 2, 18, 18),
-(19, '2024-02-01', 'Herramienta con motor que no arranca', '2024-02-11', 'Solved', 3, 19, 19),
-(20, '2024-02-15', 'Equipo con problemas eléctricos intermitentes', NULL, 'Under', 4, 20, 20);
+(19, '2024-02-01', 'Herramienta con motor que no arranca', '2024-02-11', 'Resolved', 3, 19, 19),
+(20, '2024-02-15', 'Equipo con problemas eléctricos intermitentes', NULL, 'Under review', 4, 20, 20);
 
 --Notifications
-INSERT INTO Notifications (id, message, date_message, status, id_user_id) VALUES
-(1, 'Tu pago ha sido procesado con éxito.', '2023-06-01', 'Payments', 5),
-(2, 'Tu reserva fue aprobada.', '2023-06-15', 'Reservations', 6),
-(3, 'Tu herramienta fue devuelta correctamente.', '2023-07-03', 'Returns', 7),
-(4, 'Se detectó un daño en el equipo alquilado.', '2023-07-18', 'Alerts', 8),
-(5, 'Tu pago está pendiente de confirmación.', '2023-08-01', 'Payments', 9),
-(6, 'Reserva rechazada por falta de disponibilidad.', '2023-08-10', 'Reservations', 10),
-(7, 'Se ha iniciado el proceso de devolución.', '2023-08-22', 'Returns', 11),
-(8, 'Alerta: vencimiento de reserva inminente.', '2023-09-05', 'Alerts', 12),
-(9, 'Tu factura está lista para descargar.', '2023-09-20', 'Payments', 13),
-(10, 'Tu reserva fue completada con éxito.', '2023-10-02', 'Reservations', 14),
-(11, 'Se ha registrado la devolución sin novedades.', '2023-10-16', 'Returns', 15),
-(12, 'Alerta: herramienta reportada como dañada.', '2023-10-30', 'Alerts', 16),
-(13, 'Tu método de pago fue actualizado.', '2023-11-12', 'Payments', 17),
-(14, 'Se ha aprobado una nueva reserva.', '2023-11-25', 'Reservations', 18),
-(15, 'Entrega del equipo confirmada.', '2023-12-08', 'Returns', 19),
-(16, 'Se reportó un daño al equipo entregado.', '2023-12-20', 'Alerts', 20),
-(17, 'Tu pago fue rechazado por el sistema.', '2024-01-05', 'Payments', 5),
-(18, 'Reserva en espera de aprobación.', '2024-01-18', 'Reservations', 6),
-(19, 'Equipo recibido con retraso.', '2024-02-01', 'Returns', 7),
-(20, 'Notificación de mantenimiento del sistema.', '2024-02-15', 'Alerts', 8);
+INSERT INTO Notifications (id, message, date_message, status, id_user) VALUES
+(1, 'Tu pago ha sido procesado con éxito.', '2023-06-01', 'Payment', 5),
+(2, 'Tu reserva fue aprobada.', '2023-06-15', 'Reservation', 6),
+(3, 'Tu herramienta fue devuelta correctamente.', '2023-07-03', 'Return', 7),
+(4, 'Se detectó un daño en el equipo alquilado.', '2023-07-18', 'Alert', 8),
+(5, 'Tu pago está pendiente de confirmación.', '2023-08-01', 'Payment', 9),
+(6, 'Reserva rechazada por falta de disponibilidad.', '2023-08-10', 'Reservation', 10),
+(7, 'Se ha iniciado el proceso de devolución.', '2023-08-22', 'Return', 11),
+(8, 'Alerta: vencimiento de reserva inminente.', '2023-09-05', 'Alert', 12),
+(9, 'Tu factura está lista para descargar.', '2023-09-20', 'Payment', 13),
+(10, 'Tu reserva fue completada con éxito.', '2023-10-02', 'Reservation', 14),
+(11, 'Se ha registrado la devolución sin novedades.', '2023-10-16', 'Return', 15),
+(12, 'Alerta: herramienta reportada como dañada.', '2023-10-30', 'Alert', 16),
+(13, 'Tu método de pago fue actualizado.', '2023-11-12', 'Payment', 17),
+(14, 'Se ha aprobado una nueva reserva.', '2023-11-25', 'Reservation', 18),
+(15, 'Entrega del equipo confirmada.', '2023-12-08', 'Return', 19),
+(16, 'Se reportó un daño al equipo entregado.', '2023-12-20', 'Alert', 20),
+(17, 'Tu pago fue rechazado por el sistema.', '2024-01-05', 'Payment', 5),
+(18, 'Reserva en espera de aprobación.', '2024-01-18', 'Reservation', 6),
+(19, 'Equipo recibido con retraso.', '2024-02-01', 'Return', 7),
+(20, 'Notificación de mantenimiento del sistema.', '2024-02-15', 'Alert', 8);
 
 --Stastics
-INSERT INTO Stastics (id, quantity_times_damaged, total_income, total_rentals, id_tools_equipment_construction_id) VALUES
-INSERT INTO Stastics (id, quantity_times_damaged, total_income, total_rentals, id_tools_equipment_construction_id) VALUES
+INSERT INTO Stastics (id, quantity_timesDamaged, total_income, total_rentals, id_tools_equipment_construction) VALUES
 (1, 2, 1800000, 15, 1),
 (2, 0, 850000, 7, 2),
 (3, 1, 950000, 8, 3),
