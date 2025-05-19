@@ -84,7 +84,7 @@ CREATE TABLE Damage_Report (
     report_date DATE NOT NULL,
     solution_date DATE,
     description TEXT NOT NULL,
-    status VARCHAR(100) NOT NULL CHECK (status IN ('Pending', 'Under', 'Solved')),
+    status VARCHAR(100) NOT NULL CHECK (status IN ('Pending', 'Under', 'Resolved')),
     id_users_report_id BIGINT NOT NULL REFERENCES Users(id),
     id_tool_eqcons_id BIGINT NOT NULL REFERENCES Tools_EquipmentConstruction(id),
     id_reservation_id BIGINT NOT NULL REFERENCES Reservations(id)

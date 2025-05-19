@@ -39,6 +39,7 @@ public class SecurityConfig {
             .requestMatchers("/api/customer/**").hasRole("Customer")
             .requestMatchers("/reservationManagement/**").hasRole("Supplier")
             .requestMatchers("/return/**").hasRole("Supplier")
+            .requestMatchers("/invoice/**").hasRole("Supplier")
             .anyRequest().authenticated()
         )
         .sessionManagement(sessionManager->
