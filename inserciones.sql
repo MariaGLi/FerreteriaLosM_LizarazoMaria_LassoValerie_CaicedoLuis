@@ -91,6 +91,7 @@ INSERT INTO Reservations (start_date, end_date, request_date, status, id_user_cl
 ('2024-03-01', '2024-03-04', '2024-02-25', 'Approved', 7),
 ('2024-03-10', '2024-03-14', '2024-03-05', 'Completed', 8);
 
+
 --Returns_Deliveries
 INSERT INTO Returns_Deliveries (delivery_date, return_date, commentary, status, id_reservations_id) VALUES 
 ('2023-06-01', '2023-06-03', 'Devuelto en buen estado.', 'Good', 1),
@@ -101,18 +102,7 @@ INSERT INTO Returns_Deliveries (delivery_date, return_date, commentary, status, 
 ('2023-08-10', '2023-08-12', 'Herramienta rayada pero funcional.', 'Damaged', 6),
 ('2023-09-05', '2023-09-07', 'Equipo entregado y devuelto completo.', 'Good', 7),
 ('2023-09-15', '2023-09-18', 'Cliente indica que uno de los cables no funcionó.', 'Damaged', 8),
-('2023-10-01', '2023-10-03', 'Sin observaciones.', 'Good', 9),
-('2023-10-10', '2023-10-15', 'Cliente canceló antes de usar.', 'Good', 10),
-('2023-11-01', '2023-11-03', 'Entrega y devolución puntuales.', 'Good', 11),
-('2023-11-10', '2023-11-12', 'Caja rota, se requiere mantenimiento.', 'Damaged', 12),
-('2023-12-05', '2023-12-08', 'Cliente no regresó la extensión.', 'MissingFaulty', 13),
-('2023-12-15', '2023-12-20', 'Equipo devuelto mojado, requiere revisión.', 'Damaged', 14),
-('2024-01-01', '2024-01-05', 'Todo entregado correctamente.', 'Good', 15),
-('2024-01-10', '2024-01-12', 'Devolución después de la fecha pactada.', 'Good', 16),
-('2024-02-01', '2024-02-03', 'Herramienta con leve oxidación.', 'Damaged', 17),
-('2024-02-10', '2024-02-13', 'Cliente no regresó los elementos completos.', 'MissingFaulty', 18),
-('2024-03-01', '2024-03-04', 'Devolución oportuna, sin novedades.', 'Good', 19),
-('2024-03-10', '2024-03-14', 'Accesorio dañado al regresar.', 'Damaged', 20);
+('2023-10-01', '2023-10-03', 'Sin observaciones.', 'Good', 9);
 
 --Payments
 INSERT INTO Payments (payment_method, price_total, payment_date, status, id_reservations_id) VALUES
@@ -133,9 +123,9 @@ INSERT INTO Payments (payment_method, price_total, payment_date, status, id_rese
 ('BBVA Colombia', 1024000.00, '2023-12-29', 'Paid', 15),
 ('Scotiabank Colpatria', 950000.00, '2024-01-06', 'Paid', 16),
 ('Banco Agrario', 770000.00, '2024-01-26', 'Pending', 17),
-('Banco de Occidente', 697000.00, '2024-02-02', 'Failed', 18),
-('Bancolombia', 1170000.00, '2024-02-26', 'Paid', 19),
-('Davivienda', 1285000.00, '2024-03-06', 'Paid', 20);
+('Banco de Occidente', 697000.00, '2024-02-02', 'Failed', 18);
+--('Bancolombia', 1170000.00, '2024-02-26', 'Paid', 19);
+--('Davivienda', 1285000.00, '2024-03-06', 'Paid', 20);
 
 --Invoices
 INSERT INTO Invoices (name_tool_share, nit, address, number_invoice, cellphone, registration_date, invoice_generation_date, expiration_date, url_signature, and_total, id_client_id, id_payments_id) VALUES
@@ -155,10 +145,7 @@ INSERT INTO Invoices (name_tool_share, nit, address, number_invoice, cellphone, 
 ('ToolShare SAS', '900123456-7', 'Calle 123 #45-67, Bogotá', 1014, '3012223344', '2023-05-01', '2023-12-11', '2024-01-11', 'https://firma.toolshare.com/1014', 1100000.00, 14, 14),
 ('ToolShare SAS', '900123456-7', 'Calle 123 #45-67, Bogotá', 1015, '3013334455', '2023-05-01', '2023-12-29', '2024-01-29', 'https://firma.toolshare.com/1015', 1024000.00, 15, 15),
 ('ToolShare SAS', '900123456-7', 'Calle 123 #45-67, Bogotá', 1016, '3014445566', '2023-05-01', '2024-01-06', '2024-02-06', 'https://firma.toolshare.com/1016', 950000.00, 16, 16),
-('ToolShare SAS', '900123456-7', 'Calle 123 #45-67, Bogotá', 1017, '301555667', '2023-05-01', '2024-01-26', '2024-02-26', 'https://firma.toolshare.com/1017', 770000.00, 17, 17),
-('ToolShare SAS', '900123456-7', 'Calle 123 #45-67, Bogotá', 1018, '301667788', '2023-05-01', '2024-02-02', '2024-03-02', 'https://firma.toolshare.com/1018', 697000.00, 18, 18),
-('ToolShare SAS', '900123456-7', 'Calle 123 #45-67, Bogotá', 1019, '301777889', '2023-05-01', '2024-02-26', '2024-03-26', 'https://firma.toolshare.com/1019', 1170000.00, 19, 19),
-('ToolShare SAS', '900123456-7', 'Calle 123 #45-67, Bogotá', 1020, '301888900', '2023-05-01', '2024-03-06', '2024-04-06', 'https://firma.toolshare.com/1020', 1285000.00, 20, 20);
+('ToolShare SAS', '900123456-7', 'Calle 123 #45-67, Bogotá', 1017, '301555667', '2023-05-01', '2024-01-26', '2024-02-26', 'https://firma.toolshare.com/1017', 770000.00, 17, 17);
 
 --Tools_Invoices
 INSERT INTO Tools_Invoices (unit_value, quantity, total_value, tools_id, invoice_id) VALUES
@@ -178,10 +165,7 @@ INSERT INTO Tools_Invoices (unit_value, quantity, total_value, tools_id, invoice
 (40000.00, 12, 480000.00, 14, 14),
 (30000.00, 18, 540000.00, 15, 15),
 (50000.00, 14, 700000.00, 16, 16),
-(25000.00, 10, 250000.00, 17, 17),
-(45000.00, 8, 360000.00, 18, 18),
-(65000.00, 9, 585000.00, 19, 19),
-(55000.00, 6, 330000.00, 20, 20);
+(25000.00, 10, 250000.00, 17, 17);
 
 --Damage_Report
 INSERT INTO Damage_Report (report_date, description, solution_date, status, id_users_report_id, id_toolsec_id, id_reservation_id) VALUES
