@@ -6,12 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.toolshare.toolshare.Application.Service.InventoryToolsService;
+import com.toolshare.toolshare.Domain.Persons;
 import com.toolshare.toolshare.Domain.ToolsEquipmentConstruction;
-import com.toolshare.toolshare.Domain.Users;
 import com.toolshare.toolshare.Domain.Enum.StatusToolsEC;
 import com.toolshare.toolshare.Domain.dto.ToolsECRequest;
+import com.toolshare.toolshare.Infraestructure.Repository.PersonRepository;
 import com.toolshare.toolshare.Infraestructure.Repository.ToolsECRepository;
-import com.toolshare.toolshare.Infraestructure.Repository.UsersRepository;
 
 import jakarta.persistence.EntityNotFoundException;
 
@@ -21,7 +21,7 @@ public class InventoryToolsImpl implements InventoryToolsService{
     @Autowired
     private ToolsECRepository repository;
     @Autowired
-    private UsersRepository userRepository;
+    private PersonRepository personRepository;
 
     @Override
     public ToolsEquipmentConstruction AddToolsEC(ToolsECRequest dto) {
@@ -31,7 +31,7 @@ public class InventoryToolsImpl implements InventoryToolsService{
             throw new IllegalArgumentException("The id is mandatory");
         }
 
-        Users supplier= userRepository.findById(dto.getSupplierId()).orElseThrow(() -> new RuntimeException("Suppier with " + dto.getSupplierId() + " not found"));
+        Persons supplier= personRepository.findById(dto.getSupplierId()).orElseThrow(() -> new RuntimeException("Suppier with " + dto.getSupplierId() + " not found"));
         ToolsEquipmentConstruction tool= new ToolsEquipmentConstruction();
 
         tool.setName(dto.getName());

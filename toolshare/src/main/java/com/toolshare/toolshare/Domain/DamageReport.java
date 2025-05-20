@@ -35,7 +35,7 @@ public class DamageReport {
 
     @ManyToOne
     @JoinColumn(nullable = false)
-    private Users id_users_report;
+    private Persons id_users_report;
 
     @ManyToOne
     @JoinColumn(nullable = false)
@@ -48,10 +48,19 @@ public class DamageReport {
     public DamageReport() {
     }
 
-    public DamageReport(Long id, LocalDate report_date, String description, StatusDamageReport status,
-            Users id_users_report, ToolsEquipmentConstruction idToolsEC, Reservations id_reservation) {
+    public LocalDate getSolution_date() {
+        return solution_date;
+    }
+
+    public void setSolution_date(LocalDate solution_date) {
+        this.solution_date = solution_date;
+    }
+
+    public DamageReport(Long id, LocalDate report_date, String description,LocalDate solution_date, StatusDamageReport status,
+            Persons id_users_report, ToolsEquipmentConstruction idToolsEC, Reservations id_reservation) {
         this.id = id;
         this.report_date = report_date;
+        this.solution_date = solution_date;
         this.description = description;
         this.status = status;
         this.id_users_report = id_users_report;
@@ -91,11 +100,11 @@ public class DamageReport {
         this.status = status;
     }
 
-    public Users getId_users_report() {
+    public Persons getId_users_report() {
         return id_users_report;
     }
 
-    public void setId_users_report(Users id_users_report) {
+    public void setId_users_report(Persons id_users_report) {
         this.id_users_report = id_users_report;
     }
 

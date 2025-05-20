@@ -1,6 +1,6 @@
 package com.toolshare.toolshare.Domain.response;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -8,15 +8,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class PersonResponse {
+@Builder
+public class ReservationResponse {
     private Long id;
-    private String name;
-    private String lastName;
-    private String email;
-    private Date dateRegister;
-    private String cellphone;
-    private Long userId;
+    private LocalDate start_date;
+    private LocalDate end_date;
+    private LocalDate request_date;
+    private String status;
 }

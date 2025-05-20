@@ -52,7 +52,7 @@ public class ToolsEquipmentConstruction {
     @ManyToOne
     @JoinColumn(nullable = false)
     @JsonIgnore
-    private Users id_user_supplier;
+    private Persons id_user_supplier;
 
     @ManyToMany(mappedBy = "toolsECList")
     @JsonManagedReference
@@ -67,7 +67,7 @@ public class ToolsEquipmentConstruction {
     }
 
     public ToolsEquipmentConstruction(Long id, TypeToolsEC type, String name, String category, LocalDate date_register,
-            Double priceday, String description, StatusToolsEC status, Users id_user_supplier,
+            Double priceday, String description, StatusToolsEC status, Persons id_user_supplier,
             List<Reservations> reservations_list, List<ToolsInvoices> tools_invoices_list) {
         this.id = id;
         this.type = type;
@@ -146,11 +146,11 @@ public class ToolsEquipmentConstruction {
         this.status = status;
     }
 
-    public Users getId_user_supplier() {
+    public Persons getId_user_supplier() {
         return id_user_supplier;
     }
 
-    public void setId_user_supplier(Users id_user_supplier) {
+    public void setId_user_supplier(Persons id_user_supplier) {
         this.id_user_supplier = id_user_supplier;
     }
 

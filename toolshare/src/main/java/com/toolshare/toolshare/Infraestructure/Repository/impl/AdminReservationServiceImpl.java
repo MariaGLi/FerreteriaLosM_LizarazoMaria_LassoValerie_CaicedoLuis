@@ -34,7 +34,7 @@ public class AdminReservationServiceImpl implements AdminReservationService {
                 .name(r.getId_user_client().getName())
                 .lastName(r.getId_user_client().getLast_name())
                 .email(r.getId_user_client().getEmail())
-                .dateRegister(r.getId_user_client().getDate_register().toString())
+                .dateRegister(r.getId_user_client().getDate_register())
                 .cellphone(r.getId_user_client().getCellphone())
                 .userId(r.getId_user_client().getId_user().getId())
                 .build()
