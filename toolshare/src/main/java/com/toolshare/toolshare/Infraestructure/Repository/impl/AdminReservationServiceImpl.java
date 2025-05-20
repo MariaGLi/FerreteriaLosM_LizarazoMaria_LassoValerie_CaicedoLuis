@@ -1,5 +1,6 @@
 package com.toolshare.toolshare.Infraestructure.Repository.impl;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,9 +8,11 @@ import org.springframework.stereotype.Service;
 
 import com.toolshare.toolshare.Application.Service.AdminReservationService;
 import com.toolshare.toolshare.Domain.Reservations;
+import com.toolshare.toolshare.Domain.response.MostRentedResponse;
 import com.toolshare.toolshare.Domain.response.PersonResponse;
 import com.toolshare.toolshare.Domain.response.RentalHistoryResponse;
 import com.toolshare.toolshare.Infraestructure.Repository.ReservationsRepository;
+import com.toolshare.toolshare.Infraestructure.Repository.ToolsECRepository;
 
 import lombok.RequiredArgsConstructor;
 
@@ -17,6 +20,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class AdminReservationServiceImpl implements AdminReservationService {
     private final ReservationsRepository reservationsRepository;
+    private final ToolsECRepository toolsECRepository;
 
     @Override
     public List<RentalHistoryResponse> getRentalHistory() {
@@ -44,6 +48,12 @@ public class AdminReservationServiceImpl implements AdminReservationService {
             );
         }
         return rentalHistoryResponse;
+    }
+
+    @Override
+    public List<MostRentedResponse> getMostRented(LocalDate date) {
+        List<MostRentedResponse> mostRented = toolsECRepository.findMostRented(date);
+        return mostRented;
     }
     
 }

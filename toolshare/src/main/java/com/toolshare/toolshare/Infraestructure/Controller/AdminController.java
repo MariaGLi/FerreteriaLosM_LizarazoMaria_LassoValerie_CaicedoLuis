@@ -9,18 +9,22 @@ import com.toolshare.toolshare.Application.Service.AdminToolsService;
 import com.toolshare.toolshare.Application.Service.DamageReportService;
 import com.toolshare.toolshare.Application.Service.PersonService;
 import com.toolshare.toolshare.Application.Service.RentalInvoiceService;
+import com.toolshare.toolshare.Application.Service.ReservationService;
 import com.toolshare.toolshare.Domain.request.DamageReportUpdateRequest;
 import com.toolshare.toolshare.Domain.response.DamageReportResponse;
 import com.toolshare.toolshare.Domain.response.DamageReportUpdateResponse;
 import com.toolshare.toolshare.Domain.response.InvoiceResponse;
+import com.toolshare.toolshare.Domain.response.MostRentedResponse;
 import com.toolshare.toolshare.Domain.response.PersonResponse;
 import com.toolshare.toolshare.Domain.response.RentalHistoryResponse;
 import com.toolshare.toolshare.Domain.response.StatusToolsResponse;
 
 import lombok.RequiredArgsConstructor;
 
+import java.time.LocalDate;
 import java.util.List;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -75,6 +79,11 @@ public class AdminController {
     @GetMapping("/invoices")
     public ResponseEntity<List<InvoiceResponse>> getMethodName() {
         return ResponseEntity.ok(rentalInvoiceService.findAllInvoice());
+    }
+    
+    @PostMapping("/mostRented")
+    public ResponseEntity<List<MostRentedResponse>> getMostRented(@RequestBody @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
+        return ResponseEntity.ok(adminReservationService.getMostRented(date));
     }
     
     
