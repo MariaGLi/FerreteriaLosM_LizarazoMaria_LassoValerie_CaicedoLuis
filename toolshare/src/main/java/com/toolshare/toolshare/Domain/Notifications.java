@@ -32,12 +32,12 @@ public class Notifications {
 
     @ManyToOne
     @JoinColumn(nullable = false)
-    private Users id_user;
+    private Persons id_user;
 
     public Notifications() {
     }
 
-    public Notifications(Long id, String message, StatusNotifications status, Users id_user) {
+    public Notifications(Long id, String message, StatusNotifications status, Persons id_user) {
         this.id = id;
         this.message = message;
         this.status = status;
@@ -68,11 +68,11 @@ public class Notifications {
         this.status = status;
     }
 
-    public Users getId_user() {
+    public Persons getId_user() {
         return id_user;
     }
 
-    public void setId_user(Users id_user) {
+    public void setId_user(Persons id_user) {
         this.id_user = id_user;
     }
 

@@ -2,6 +2,7 @@ package com.toolshare.toolshare.Domain;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.toolshare.toolshare.Domain.Enum.StatusPayments;
 
 import jakarta.persistence.Column;
@@ -34,6 +35,7 @@ public class Payments {
     private StatusPayments status;
 
     @OneToOne
+    @JsonIgnore
     @JoinColumn(nullable = false)
     private Reservations id_reservations;
 

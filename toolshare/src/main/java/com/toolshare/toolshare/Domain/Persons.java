@@ -1,7 +1,6 @@
 package com.toolshare.toolshare.Domain;
 
 import java.util.Date;
-import java.time.LocalDate;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -10,7 +9,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
-import jakarta.websocket.ClientEndpoint;
 
 @Entity
 public class Persons {

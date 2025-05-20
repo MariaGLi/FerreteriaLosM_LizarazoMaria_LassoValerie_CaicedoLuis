@@ -3,7 +3,7 @@ package com.toolshare.toolshare.Domain;
 import java.time.LocalDate;
 import java.util.List;
 
-import org.springframework.cglib.core.Local;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -11,8 +11,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
@@ -55,14 +53,17 @@ public class Invoices {
     private double and_total;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(nullable = false)
-    private Users id_client;
+    private Persons id_client;
 
     @OneToOne
+    @JsonIgnore
     @JoinColumn(nullable = false)
     private Payments id_payments;
 
     @OneToMany(mappedBy = "invoices")
+    @JsonIgnore
     private List<ToolsInvoices> tool_invoice_list;
 
     public Invoices() {
@@ -70,7 +71,7 @@ public class Invoices {
 
     public Invoices(Long id, String name_tool_share, String nit, String address, Long number_invoice, String cellphone,
             LocalDate registration_date, LocalDate invoice_generation_date, LocalDate expiration_date,
-            String url_signature, double and_total, Users id_client, Payments id_payments,
+            String url_signature, double and_total, Persons id_client, Payments id_payments,
             List<ToolsInvoices> tool_invoice_list) {
         this.id = id;
         this.name_tool_share = name_tool_share;
@@ -176,11 +177,11 @@ public class Invoices {
         this.and_total = and_total;
     }
 
-    public Users getId_client() {
+    public Persons getId_client() {
         return id_client;
     }
 
-    public void setId_client(Users id_client) {
+    public void setId_client(Persons id_client) {
         this.id_client = id_client;
     }
 
