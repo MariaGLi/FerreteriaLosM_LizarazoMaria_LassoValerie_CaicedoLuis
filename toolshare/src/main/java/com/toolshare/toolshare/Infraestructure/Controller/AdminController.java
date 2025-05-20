@@ -8,9 +8,11 @@ import com.toolshare.toolshare.Application.Service.AdminReservationService;
 import com.toolshare.toolshare.Application.Service.AdminToolsService;
 import com.toolshare.toolshare.Application.Service.DamageReportService;
 import com.toolshare.toolshare.Application.Service.PersonService;
+import com.toolshare.toolshare.Application.Service.RentalInvoiceService;
 import com.toolshare.toolshare.Domain.request.DamageReportUpdateRequest;
 import com.toolshare.toolshare.Domain.response.DamageReportResponse;
 import com.toolshare.toolshare.Domain.response.DamageReportUpdateResponse;
+import com.toolshare.toolshare.Domain.response.InvoiceResponse;
 import com.toolshare.toolshare.Domain.response.PersonResponse;
 import com.toolshare.toolshare.Domain.response.RentalHistoryResponse;
 import com.toolshare.toolshare.Domain.response.StatusToolsResponse;
@@ -35,6 +37,7 @@ public class AdminController {
     private final AdminToolsService adminToolsService;
     private final AdminReservationService adminReservationService;
     private final DamageReportService damageReportService;
+    private final RentalInvoiceService rentalInvoiceService;
 
     @PostMapping("/users")
     public ResponseEntity<List<PersonResponse>> getUsers(@RequestParam(required = false)String role) {
@@ -68,5 +71,11 @@ public class AdminController {
         response.setId(id);
         return ResponseEntity.ok(damageReportService.updateDamageReport(response));
     }
+
+    @GetMapping("/invoices")
+    public ResponseEntity<List<InvoiceResponse>> getMethodName() {
+        return ResponseEntity.ok(rentalInvoiceService.findAllInvoice());
+    }
+    
     
 }
