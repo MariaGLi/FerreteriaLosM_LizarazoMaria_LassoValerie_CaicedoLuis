@@ -1,17 +1,14 @@
 package com.toolshare.toolshare.Domain.dto;
 
 import java.time.LocalDate;
-
-import com.toolshare.toolshare.Domain.Enum.StatusReservations;
-
+import java.util.List;
 public class ReservationDto {
 
     private LocalDate startDate;
     private LocalDate endDate; 
     private LocalDate requestDate;
-    private StatusReservations status;
     private Long idClient;
-    private Long idToolEC;
+    private List<Long> idToolEC;
 
     public LocalDate getStartDate() {
         return startDate;
@@ -31,22 +28,16 @@ public class ReservationDto {
     public void setRequestDate(LocalDate requestDate) {
         this.requestDate = requestDate;
     }
-    public StatusReservations getStatus() {
-        return status;
-    }
-    public void setStatus(StatusReservations status) {
-        this.status = status;
-    }
     public Long getIdClient() {
         return idClient;
     }
     public void setIdClient(Long idClient) {
         this.idClient = idClient;
     }
-    public Long getIdToolEC() {
+    public List<Long> getIdToolEC() {
         return idToolEC;
     }
-    public void setIdToolEC(Long idToolEC) {
+    public void setIdToolEC(List<Long> idToolEC) {
         this.idToolEC = idToolEC;
     }
 }

@@ -24,6 +24,6 @@ public class custReservationController {
     @PostMapping("/addReservation")
     public ResponseEntity<Reservations> newReservations(@RequestBody ReservationDto reservDto){
         Reservations reservations = reservService.newReservations(reservDto);
-        return new ResponseEntity<Reservations>(reservations, HttpStatus.CREATED);
+        return new ResponseEntity<>(reservations, HttpStatus.CREATED);
     }
 }
