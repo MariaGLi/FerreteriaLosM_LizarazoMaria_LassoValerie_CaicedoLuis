@@ -1,34 +1,46 @@
 package com.toolshare.toolshare.Infraestructure.Repository.RepositoryIMPL;
 
-import java.time.LocalDate;
+import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.toolshare.toolshare.Application.Service.custReservationService;
+import com.toolshare.toolshare.Domain.Persons;
 import com.toolshare.toolshare.Domain.Reservations;
-import com.toolshare.toolshare.Domain.Enum.StatusReservations;
+import com.toolshare.toolshare.Domain.ToolsEquipmentConstruction;
+import com.toolshare.toolshare.Domain.dto.ReservationDto;
+import com.toolshare.toolshare.Infraestructure.Repository.PersonRepository;
 import com.toolshare.toolshare.Infraestructure.Repository.ReservationsRepository;
+import com.toolshare.toolshare.Infraestructure.Repository.ToolsECRepository;
 
 @Service
 public class custReservImpl implements custReservationService{
 
-    private final ReservationsRepository reservRepository;
+    @Autowired
+    private ReservationsRepository reservRepository;
 
-    public custReservImpl(ReservationsRepository reservRepository) {
-        this.reservRepository = reservRepository;
-    }
+    @Autowired
+    private PersonRepository personRepository;
+
+    @Autowired
+    private ToolsECRepository toolsECRepository;
 
     @Override
-    public Reservations createReservation(LocalDate start_date, LocalDate end_date, LocalDate Reques_date,
-            StatusReservations status) {
+    public Reservations newReservations(ReservationDto reservDto) {
+
+        Persons idClient= personRepository.findById(reservDto.getIdClient()).orElseThrow(()-> new RuntimeException("User not found"));
+        ToolsEquipmentConstruction idTool= toolsECRepository.findById(reservDto.getIdToolEC()).orElseThrow(()-> new RuntimeException("Product not found"));
         
         Reservations newReservations = new Reservations();
+        newReservations.setStart_date(reservDto.getStartDate());
+        newReservations.setEnd_date(reservDto.getEndDate());
+        newReservations.setRequest_date(reservDto.getRequestDate());
+        newReservations.setStatus(reservDto.getStatus());
 
-        newReservations.setStart_date(start_date);
-        newReservations.setEnd_date(end_date);
-        newReservations.setRequest_date(Reques_date);
-        newReservations.setStatus(status);
+        newReservations.setId_user_client(idClient);
+        newReservations.setToolsECList(List.of(idTool));
 
         return reservRepository.save(newReservations);
-    }
+    } 
 }

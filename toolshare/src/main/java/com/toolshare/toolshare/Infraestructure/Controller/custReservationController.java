@@ -1,28 +1,29 @@
 package com.toolshare.toolshare.Infraestructure.Controller;
 
-import java.time.LocalDate;
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.toolshare.toolshare.Application.Service.custReservationService;
 import com.toolshare.toolshare.Domain.Reservations;
-import com.toolshare.toolshare.Domain.Enum.StatusReservations;
+import com.toolshare.toolshare.Domain.dto.ReservationDto;
+import org.springframework.http.MediaType;
+
 
 @RestController
-@RequestMapping("/api/customer/reservations")
+@RequestMapping(value = "/reservations", produces = MediaType.APPLICATION_JSON_VALUE)
 public class custReservationController {
 
-    private final custReservationService reservService;
-
-    public custReservationController(custReservationService reservService) {
-        this.reservService = reservService;
-    }
-
+    @Autowired
+    private custReservationService reservService;
+    
     @PostMapping("/addReservation")
-    public Reservations createReservation(LocalDate start_date, LocalDate end_date, LocalDate Request_date,
-            StatusReservations status) {
-        return reservService.createReservation(start_date, end_date, Request_date, status);
+    public ResponseEntity<Reservations> newReservations(@RequestBody ReservationDto reservDto){
+        Reservations reservations = reservService.newReservations(reservDto);
+        return new ResponseEntity<Reservations>(reservations, HttpStatus.CREATED);
     }
 }
