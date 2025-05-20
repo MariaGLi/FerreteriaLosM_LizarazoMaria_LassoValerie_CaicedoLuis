@@ -38,8 +38,9 @@ public class SecurityConfig {
             .requestMatchers("/InventoryManagment/**").hasRole("Supplier")
             .requestMatchers("/api/customer/**").hasRole("Customer")
             .requestMatchers("/reservationManagement/**").hasRole("Supplier")
-            .requestMatchers("/return/**").permitAll()
+            .requestMatchers("/return/**").hasRole("Supplier")
             .requestMatchers("/invoice/**").hasRole("Supplier")
+            .requestMatchers("/payment/**").hasRole("Supplier")
             .anyRequest().authenticated()
         )
         .sessionManagement(sessionManager->
