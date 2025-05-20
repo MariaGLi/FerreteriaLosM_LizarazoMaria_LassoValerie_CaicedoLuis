@@ -1,5 +1,6 @@
 package com.toolshare.toolshare.Infraestructure.Repository.RepositoryIMPL;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,8 @@ public class InventoryToolsImpl implements InventoryToolsService{
     private ToolsECRepository repository;
     @Autowired
     private PersonRepository personRepository;
+    @Autowired
+    private ToolsECRepository tEquipmentConstruction;
 
     @Override
     public ToolsEquipmentConstruction AddToolsEC(ToolsECRequest dto) {
@@ -72,6 +75,11 @@ public class InventoryToolsImpl implements InventoryToolsService{
         toolExist.setStatus(statusS);
 
         return repository.save(toolExist);
+    }
+
+    @Override
+    public List<ToolsEquipmentConstruction> getAll() {
+        return tEquipmentConstruction.findAll();
     }
 
 
