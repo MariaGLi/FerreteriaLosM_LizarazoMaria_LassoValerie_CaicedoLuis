@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../css/adminInvoice.css">
     <link rel="stylesheet" href="../css/admin.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,7 +16,7 @@
         <div class="menu">
             <img class="herramientas" src="../images/tools.png" alt="">
             <div class="options">
-                <p class="title">Everything to build <br> and repair</p>
+                <p id="title">Everything to build <br> and repair</p>
                 <div class="buttons">
                     <button class="menuBtn" id="btnActive">Control panel</button>
                     <button class="menuBtn">Supervision</button>
@@ -23,21 +24,26 @@
                 </div>
             </div>
             <div class="options2">
-                <button class="logout">Log out</button>
+                <a href="./login.html">
+                    <button class="logout" onclick="logout()">Log out</button>
+                </a>
             </div>
         </div>
+        <div class="subMenu">
+            <div class="optionsbtn">
+                <button onclick="listUsers()">List Users</button>
+                <button onclick="invoices()">Invoices</button>
+                <button>Rental History</button>
+            </div>
+        </div>
+        
         <div class="content">
-            <div class="filters">
-                <button id="filterBtn" class="select" onclick="getAllUsers()">All</button>
-                <button id="filterBtn" onclick="getAllUsersFilter('supplier')">Supplier</button>
-                <button id="filterBtn" onclick="getAllUsersFilter('customer')">Customer</button>
-            </div>
-            <h2>Users</h2>
-            <div class="users">
-                
-            </div>
+            
         </div>
     </div>
 </body>
-    <script src="../js/admin.js"></script>
+    <script src="../js/adminUsers.js"></script>
+    <script src="../js/adminRentalHistory.js"></script>
+    <script src="../js/adminButtons.js"></script>
+    <script src="../js/adminInvoices.js"></script>
 </html>

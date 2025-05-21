@@ -3,14 +3,18 @@
 }
 body{
     font-family: "Kanit", sans-serif;
+    background-color: #D9D9D9;
+}
+button{
+    cursor: pointer;
 }
 .menu{
     position: relative;
     width: 100vw;
-    overflow: hidden;
     display: flex;
     height: 18vw;
     min-height: 12.6rem;
+    overflow: hidden;
 }
 .herramientas{
     width: 100vw;
@@ -32,12 +36,23 @@ body{
     padding: 1rem;
     text-align: end;
 }
+.logout{
+    position: relative;
+    font-family: "Kanit", sans-serif;
+    background-color: #D67929;
+    border: none;
+    padding: 0.5rem 1rem;
+    color: white;
+    border-radius: 5px;
+    font-size: 0.8rem;
+}
 .buttons{
     display: flex;
     flex-direction: row;
     gap: 7px;
 }
 .menu .menuBtn{
+    position: relative;
     font-family: "Kanit", sans-serif;
     background-color: #D67929;
     border: none;
@@ -59,6 +74,7 @@ body{
 }
 .filters{
     width: 70%;
+    min-width: 22rem;
     margin-top: 1rem;
     display: flex;
     justify-content: end;
@@ -74,10 +90,13 @@ body{
 h2{
     color: #535353;
     width: 70%;
+    min-width: 22rem;
     font-size: 1.3rem;
+    margin-top: 1rem;
 }
 .users{
     max-width: 70%;
+    min-width: 22rem;
     margin-bottom: 3rem;
     margin-top: 1rem;
     display: flex;
@@ -119,6 +138,19 @@ h2{
 #btnActive{
     color:#535353;
     background-color: #D9D9D9;
+}
+.optionsbtn{
+    background-color: white;
+    padding: 1rem;
+}
+.optionsbtn button{
+    border: none;
+    font-family: "Kanit", sans-serif;
+    color: #535353;
+}
+.optionsbtn button:hover{
+    text-decoration: underline;
+    color: #D67929;
 }
 
 @media only screen and (max-width: 1120px){

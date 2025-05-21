@@ -1,0 +1,71 @@
+.invoice{
+    background-color: white;
+    max-width: 70%;
+    min-width: 18rem;
+    margin-bottom: 3rem;
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 1rem 2rem;
+    border-radius: 7px;
+}
+.title{
+    text-align: center;
+    font-size: 1.2rem;
+    width: 100%;
+    color: #D67929;
+    font-weight: bold;
+}
+.titleTool{
+    margin-bottom: 1rem;
+}
+#ToolShare{
+    text-align: start;
+    font-size: 1.5rem;
+}
+.payment, .person, .tools{
+    padding: 1rem;
+    border-radius: 7px;
+}
+.payment{
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+}
+.tools{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.tool{
+    background-color: white;
+    padding: 1rem;
+    border-radius: 7px;
+}
+strong{
+    color: #535353;
+}
+.invoiceHeader{
+    width: 65%;
+    padding-left: 2rem;
+    padding-top: 1rem;
+}
+.img{
+    width: 27%;
+    display: flex;
+    justify-content: end;
+    position: relative;
+    overflow: hidden;
+}
+.logo{
+    width: 85%;
+    position: absolute;
+    top: -1rem;
+}
+@media only screen and (max-width: 1120px){
+    .invoice{
+        padding: 0;
+    }
+}

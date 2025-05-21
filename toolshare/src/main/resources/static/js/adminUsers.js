@@ -1,28 +1,32 @@
-let btn = document.querySelectorAll("#filterBtn");
-
-btn.forEach(e => {
-    e.addEventListener("click",function() {
-        btn.forEach(x => {
-            x.removeAttribute("class");
-        });
-        e.setAttribute("class","select");
-    });
-});
-
-let menuBtn = document.querySelectorAll(".menuBtn");
-
-menuBtn.forEach(e => {
-    e.addEventListener("click",function() {
-        menuBtn.forEach(x => {
-            console.log("hola");
+listUsers()
+function listUsers(){
+    let content = document.querySelector(".content");
+    content.innerHTML = ``;
+    content.innerHTML += `
+        <div class="filters">
+            <button id="filterBtn" class="select" onclick="getAllUsers()">All</button>
+            <button id="filterBtn" onclick="getAllUsersFilter('supplier')">Supplier</button>
+            <button id="filterBtn" onclick="getAllUsersFilter('customer')">Customer</button>
+        </div>
+        <h2>Users</h2>
+        <div class="users">
             
-            x.removeAttribute("id");
-        });
-        e.setAttribute("id","btnActive");
-    });
-});
+        </div>
+    `;
 
-getAllUsers();
+    let btn = document.querySelectorAll("#filterBtn");
+
+    btn.forEach(e => {
+        e.addEventListener("click",function() {
+            btn.forEach(x => {
+                x.removeAttribute("class");
+            });
+            e.setAttribute("class","select");
+        });
+    });
+
+    getAllUsers();
+}
 function getAllUsers() {
     let link = "http://localhost:8080/api/admin/users";
     connection(link);
@@ -52,7 +56,7 @@ function connection(link){
             json.forEach(e => {
                 contentUsers.innerHTML += `
                 <div class="user">
-                    <img src="../img/logoM3-removebg-preview.png" alt="">
+                    <img src="../images/logoM3-removebg-preview.png" alt="">
                     <div class="name">${e.name} ${e.lastName}</div>
                     <button class="info">Info</button>
                 </div>

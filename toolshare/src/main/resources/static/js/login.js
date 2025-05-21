@@ -22,10 +22,8 @@ function login(){
         .then(res => res.json())
         .then(json =>{
             if (json) {
-                console.log("session started");
-                console.log(json.token);
-                console.log(json.type);
                 if (json.type == 'Admin') {
+                    alert("session started as Admin");
                     form.setAttribute('action',"./admin.html");
                     localStorage.setItem('token',json.token);
                     form.removeEventListener("submit",arguments.callee);
@@ -33,12 +31,14 @@ function login(){
                 }
 
                 if (json.type == 'Supplier') {
+                    alert("session started as Supplier");
                     form.setAttribute('action',"./Supplier.html");
                     localStorage.setItem('token',json.token);
                     form.removeEventListener("submit",arguments.callee);
                     form.submit();
                 }
                 if (json.type == 'Customer') {
+                    alert("session started as Customer");
                     form.setAttribute('action',"./customer.html");
                     localStorage.setItem('token',json.token);
                     form.removeEventListener("submit",arguments.callee);
@@ -46,10 +46,10 @@ function login(){
                 }
             }
             else{
-                console.log("An error has occurred while logging in.");
+                alert("An error has occurred while logging in.");
             }
         })
-        .catch(error => console.log("An error occurred while connecting to the server."));
+        .catch(error => alert("An error occurred while connecting to the server."));
     })
 
     
