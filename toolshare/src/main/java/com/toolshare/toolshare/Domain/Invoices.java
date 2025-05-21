@@ -53,13 +53,11 @@ public class Invoices {
     private double and_total;
 
     @ManyToOne
-    @JsonIgnore
     @JoinColumn(nullable = false)
     private Persons id_client;
 
     @OneToOne
-    @JsonIgnore
-    @JoinColumn(nullable = false)
+    @JoinColumn(nullable = true)
     private Payments id_payments;
 
     @OneToMany(mappedBy = "invoices")

@@ -2,6 +2,7 @@ package com.toolshare.toolshare.Infraestructure.Repository.RepositoryIMPL;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,6 +11,7 @@ import com.toolshare.toolshare.Application.Service.PaymentsService;
 import com.toolshare.toolshare.Domain.Payments;
 import com.toolshare.toolshare.Domain.Reservations;
 import com.toolshare.toolshare.Domain.ToolsEquipmentConstruction;
+import com.toolshare.toolshare.Domain.Enum.StatusPayments;
 import com.toolshare.toolshare.Domain.Enum.StatusReservations;
 import com.toolshare.toolshare.Domain.dto.PaymentsDto;
 import com.toolshare.toolshare.Infraestructure.Repository.PaymentsRepository;
@@ -53,6 +55,11 @@ public class PaymentsImpl implements PaymentsService{
         payment.setPrice_total(total);
         
         return paymentsRepository.save(payment);
+    }
+
+    @Override
+    public List<Payments> getAllStatusPaid() {
+        return paymentsRepository.findByStatus(StatusPayments.Paid);
     }
 
 }

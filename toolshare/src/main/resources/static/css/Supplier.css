@@ -171,7 +171,7 @@ h2{
     color: #535353;
     width: 150px;
 }
-#send{
+#send, .send{
     padding: 10px 25px 10px 25px;
     background-color: #D67929;
     border: none;
@@ -186,6 +186,24 @@ h2{
 }
 h4{
     color: #D67929;
+}
+.logout{
+    position: relative;
+    font-family: "Kanit", sans-serif;
+    background-color: #D67929;
+    border: none;
+    padding: 0.5rem 1rem;
+    color: white;
+    border-radius: 5px;
+    font-size: 0.8rem;
+}
+.paid{
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
 }
 .reservation{
     display: flex;

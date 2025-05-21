@@ -10,4 +10,5 @@ import com.toolshare.toolshare.Domain.Enum.StatusReservations;
 @Repository
 public interface ReservationsRepository extends JpaRepository<Reservations, Long>{
     List<Reservations> findByStatus(StatusReservations status);
+    
 }

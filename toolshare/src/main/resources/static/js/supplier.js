@@ -202,6 +202,7 @@ menuBtn.forEach(e => {
             }
 
             if(e.textContent.trim()==="Damage"){
+                
                 document.getElementById("searchInput").style.display= "none";
                 fetch(`http://localhost:8080/reservationManagement/returnAccept`, {
                     method: "GET",
@@ -215,7 +216,7 @@ menuBtn.forEach(e => {
                 .then(json=>{
 
                     if(json.length===0){
-                        alert("they are no return reservations")
+                        alert("they are no damage")
                         return
                     }
 
@@ -228,10 +229,11 @@ menuBtn.forEach(e => {
                         var idClientD= res.id_user_client.id
                         
                         res.toolsECList.forEach(tool=>{
-                            
+                            const uniqueid= `${tool.id}`
                             console.log(tool.id)
-                            contentUsers.innerHTML += `
-                                <form action="" method="post" class="form">
+                            console.log(uniqueid)
+                            const html = `
+                                <form id="form-${uniqueid}" method="post" class="form">
                                     <div class="newTool">
                                         <h2>Reservation: ${idReservationD}</h2>
                                     </div>
@@ -243,12 +245,12 @@ menuBtn.forEach(e => {
                                     
                                     <div class="newTool">
                                         <label for="description">Description</label>
-                                        <input type="text" class="enterTool" id="description" required>
+                                        <input type="text" class="enterTool" id="description-${uniqueid}" required>
                                     </div>
 
                                     <div class="newTool">
                                         <label for="status">Status Report</label>
-                                        <select id="statusOption" class="enterTool data-id="${tool.id}" required>
+                                        <select id="status-${uniqueid}" class="enterTool" required>
                                             <option value="Pending">Pending</option>
                                             <option value="Under">Under</option>
                                             <option value="Resolved">Resolved</option>
@@ -257,57 +259,92 @@ menuBtn.forEach(e => {
                                     </div>
                                     <div class="newTool">
                                         <label for="dateReport">Date Report</label>
-                                        <input type="date" class="enterTool"  id="dateRegister">
+                                        <input type="date" class="enterTool"  id="dateRegister-${uniqueid}">
                                     </div>
-                                    <button type="submit" id="send">Send</button>
+                                    <button type="submit" id="send-${uniqueid}" class="send">Send</button>
                                 </form>
                             `
-                        })
-                        document.querySelectorAll(".statusOption").forEach(f =>{
-                            f.addEventListener("change", function(){
-                                var toolId= this.getAttribute("data-id")
-                                var actionDamage = this.value
-                            })
-                        })
-                        document.getElementById("send").addEventListener("click", function (f){
-                            f.preventDefault();     
-                            
-                            const newReport= {
-                                "reporDate":document.getElementById("dateRegister").value,
-                                "solutionDate": "",
-                                "description": document.getElementById("description").value.trim(),
-                                "status": actionDamage,
-                                "idClient": idClientD,
-                                "idToolEC": toolId,
-                                "idReservation": idReservationD
-                            }
+                            contentUsers.insertAdjacentHTML("beforeend", html)
 
-                            fetch("http://localhost:8080/damagedReport/report",{
-                                method: "POST",
-                                headers: {
-                                    'Authorization': `Bearer ${localStorage.getItem("token")}`,
-                                    'Content-Type': 'application/json; charset=UTF-8'
-                                },
-                                body: JSON.stringify(newReport)
-                            })
-                            .then(res=>{    
-                                if(res.ok){
-                                    alert("new report");
-                                } else {
-                                    alert("no añadió")
+                            const idForm= document.getElementById(`form-${uniqueid}`)
+                            idForm.addEventListener("submit", function (f){
+                                f.preventDefault()
+
+                                const description= document.getElementById(`description-${uniqueid}`).value.trim()
+                                const statusR= document.getElementById(`status-${uniqueid}`).value
+                                const reportDate= document.getElementById(`dateRegister-${uniqueid}`).value
+                            
+                                const newReport= {
+                                    "reporDate": reportDate,
+                                    "solutionDate": "",
+                                    "description": description,
+                                    "status": statusR,
+                                    "idClient": idClientD,
+                                    "idToolEC": tool.id,
+                                    "idReservation": idReservationD
                                 }
+                                
+                                fetch("http://localhost:8080/damagedReport/report",{
+                                    method: "POST",
+                                    headers: {
+                                        'Authorization': `Bearer ${localStorage.getItem("token")}`,
+                                        'Content-Type': 'application/json; charset=UTF-8'
+                                    },
+                                    body: JSON.stringify(newReport)
+                                })
+                                .then(res=>{    
+                                    if(res.ok){
+                                        alert("New report added successfully.");
+                                        document.getElementById(`form-${uniqueid}`).remove()
+                                    } else {
+                                        alert("Failed to create report.")
+                                    }
+                                })
+                                .catch(error => {
+                                    alert("Connection error: ", error);
+                                })
                             })
-                            .catch(error => {
-                                alert("error en la conexión", error);
-                        });
-                    
+                        })
+                    })
+                }
+            )}
+            if (e.textContent.trim()=== "Payments") {
+                document.getElementById("searchInput").style.display= "none";
+                fetch("http://localhost:8080/payment/paid",{
+                    method: "GET",
+                    headers:{
+                        'Authorization': `Bearer ${localStorage.getItem("token")}`,
+                        'Content-Type': 'application/json; charset=UTF-8'
+                    }
+                })
+                .then(res=> res.json())
+                .then(json=>{
+
+                    if(json.length===0){
+                        alert("they are no")
+                        return
+                    }
+
+                    let contentUsers = document.querySelector(".tools");
+                    contentUsers.innerHTML = ``;
+                    json.forEach(res=>{
+                        contentUsers.innerHTML +=`
+                        <div class="reservation">
+                            <h4>Payment vouchers</h4>
+                            <div class="dates">
+                                <div class="date">${res.payment_date}</div>
+                                <div class="date">${res.payment_method}</div>
+                                
+                            </div>
+                            <h4>$${res.price_total}</h4>
+                            <div class="status">${res.status}</div>
+                        </div>
+                    `
                     })
                 })
-                
-            }
-        )}  
-    });
-});
+            }  
+    })
+})
 
 let toolsInput= [];
 document.addEventListener("DOMContentLoaded", () =>{
@@ -391,4 +428,8 @@ function updateStatusReservation(id, action) {
     .catch(error =>{
         console.error("error updating reservation: ", error)
     })
+}
+
+function logout(){
+    localStorage.removeItem('token');
 }
