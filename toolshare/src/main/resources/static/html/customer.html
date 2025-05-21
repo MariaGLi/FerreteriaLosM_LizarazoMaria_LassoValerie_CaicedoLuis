@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToolsShore</title>
+    <link rel="stylesheet" href="../css/customer.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link rel="icon" type="image.png" href="../images/logoM3-removebg-preview.png">
+</head>
+<body>
+    <div class="container">
+        <div class="menu">
+            <img class="herramientas" src="../images/tools.png" alt="">
+            <div class="options">
+                <p class="title">Everything to build <br> and repair</p>
+                <div class="buttons">
+                    <button class="menuBtn" id="btnActive">Inventory</button>
+                    <button class="menuBtn">Reservations</button>
+                    <button class="menuBtn">Payments</button>
+                </div>
+            </div>
+            <div class="options2">
+                <button class="logout">Log out</button>
+            </div>
+        </div>
+        <div class="content">
+            <form action="/searchTool" method="get">
+                <input type="text" name="query" placeholder="Search...">
+                <button type="submit" id="SearchButton">Search</button>
+            </form>
+            <div class="users">
+                
+            </div>
+        </div>
+    </div>
+</body>
+</html>

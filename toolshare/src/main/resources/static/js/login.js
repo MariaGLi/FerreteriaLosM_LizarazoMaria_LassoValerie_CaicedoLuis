@@ -38,6 +38,12 @@ function login(){
                     form.removeEventListener("submit",arguments.callee);
                     form.submit();
                 }
+                if (json.type == 'Customer') {
+                    form.setAttribute('action',"./customer.html");
+                    localStorage.setItem('token',json.token);
+                    form.removeEventListener("submit",arguments.callee);
+                    form.submit();
+                }
             }
             else{
                 console.log("An error has occurred while logging in.");
