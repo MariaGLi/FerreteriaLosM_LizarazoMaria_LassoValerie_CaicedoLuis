@@ -19,14 +19,14 @@ function showOptions(type){
             <div class="optionsbtn">
                 <button onclick="listUsers()">List Users</button>
                 <button onclick="invoices()">Invoices</button>
-                <button onclick="rentalHistory()">Invoices</button>
+                <button onclick="rentalHistory()">Rental History</button>
             </div>
         `;
     }
     if (type=="Supervision") {
         subMenu.innerHTML+=`
             <div class="optionsbtn">
-                <button>State Tools</button>
+                <button onclick="toolsStatus()">State Tools</button>
                 <button>Report Damage</button>
             </div>
         `;

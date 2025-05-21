@@ -152,6 +152,9 @@ h2{
     text-decoration: underline;
     color: #D67929;
 }
+.toolStatus{
+    width: 17rem;
+}
 
 @media only screen and (max-width: 1120px){
     .herramientas{
