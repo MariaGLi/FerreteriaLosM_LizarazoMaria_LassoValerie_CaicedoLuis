@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 
 
+
+
 @RestController
 @RequestMapping(value = "/reservationManagement", produces = MediaType.APPLICATION_JSON_VALUE)
 public class ReservationController {
@@ -41,6 +43,26 @@ public class ReservationController {
     @GetMapping("/pending")
     public List<Reservations> getAllStatusPending() {
         return rManagementService.getAllStatusPending();
+    }
+    
+    @GetMapping("/return")
+    public List<Reservations> getStatusReturn() {
+        return rManagementService.getAllStatusReturn();
+    }
+    
+    @PutMapping("/returnaccept/{id}")
+    public Reservations returnAccept(@PathVariable Long id) {
+        return rManagementService.returnAccept(id);
+    }
+    
+    @PutMapping("/returnreject/{id}")
+    public Reservations returnReject(@PathVariable Long id) {
+        return rManagementService.returnReject(id);
+    }
+
+    @GetMapping("/returnAccept")
+    public List<Reservations> getAllReturnAccept() {
+        return rManagementService.getAllStatusReturnAccept();
     }
     
 }

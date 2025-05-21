@@ -13,8 +13,6 @@ public class ToolsECRequest{
     private LocalDate dateRegister;
     private Double priceDay;
     private String description;
-    private StatusToolsEC status;
-
     
     public TypeToolsEC getType() {
         return type;
@@ -51,12 +49,6 @@ public class ToolsECRequest{
     }
     public void setDescription(String description) {
         this.description = description;
-    }
-    public StatusToolsEC getStatus() {
-        return status;
-    }
-    public void setStatus(StatusToolsEC status) {
-        this.status = status;
     }
     public Long getSupplierId() {
         return supplierId;

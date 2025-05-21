@@ -43,7 +43,7 @@ public class InventoryToolsImpl implements InventoryToolsService{
         tool.setPriceDay(dto.getPriceDay());
         tool.setDescription(dto.getDescription());
         tool.setType(dto.getType());
-        tool.setStatus(dto.getStatus());
+        tool.setStatus(StatusToolsEC.Available);
         tool.setId_user_supplier(supplier);
 
         return repository.save(tool);
@@ -66,10 +66,6 @@ public class InventoryToolsImpl implements InventoryToolsService{
     public ToolsEquipmentConstruction updateTool(Long id, Double priceDay, StatusToolsEC statusS) {
         
         Optional<ToolsEquipmentConstruction> findTool= repository.findById(id);
-        
-        if(findTool== null){
-            throw new RuntimeException("Enter the id");
-        } 
         ToolsEquipmentConstruction toolExist= findTool.get();
         toolExist.setPriceDay(priceDay);
         toolExist.setStatus(statusS);

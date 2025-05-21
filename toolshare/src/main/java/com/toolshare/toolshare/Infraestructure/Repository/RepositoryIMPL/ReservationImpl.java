@@ -39,6 +39,28 @@ public class ReservationImpl implements ReservationService{
     public List<Reservations> getAllStatusCompleted() {
         return reservationsRepository.findByStatus(StatusReservations.Completed);
     }
+    @Override
+    public List<Reservations> getAllStatusReturn() {
+        return reservationsRepository.findByStatus(StatusReservations.Return);
+    }
+    @Override
+    public Reservations returnAccept(Long id) {
+        Reservations reservation= reservationsRepository.findById(id).orElseThrow(() -> new RuntimeException("Reservation: Not found"));
+        reservation.setStatus(StatusReservations.ReturnAccept);
+
+        return reservationsRepository.save(reservation);
+    }
+    @Override
+    public Reservations returnReject(Long id) {
+        Reservations reservation= reservationsRepository.findById(id).orElseThrow(() -> new RuntimeException("Reservation: Not found"));
+        reservation.setStatus(StatusReservations.ReturnReject);
+
+        return reservationsRepository.save(reservation);
+    }
+    @Override
+    public List<Reservations> getAllStatusReturnAccept() {
+        return reservationsRepository.findByStatus(StatusReservations.ReturnAccept);
+    }
     
 
 }
