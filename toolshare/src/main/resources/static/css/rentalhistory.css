@@ -1,0 +1,25 @@
+.rentals{
+    background-color: white;
+    max-width: 70%;
+    min-width: 18rem;
+    margin-bottom: 3rem;
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 1rem 2rem;
+    border-radius: 7px;
+}
+.toolsRental{
+    background-color: #D9D9D9;
+    gap: 1rem;
+    font-size: clamp(0.6rem, 2.5vw, 1rem);
+}
+.personRental{
+    padding: 0;
+}
+@media only screen and (max-width: 1120px){
+    .toolsRental{
+    }
+}

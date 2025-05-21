@@ -19,7 +19,7 @@ function showOptions(type){
             <div class="optionsbtn">
                 <button onclick="listUsers()">List Users</button>
                 <button onclick="invoices()">Invoices</button>
-                <button>Rental History</button>
+                <button onclick="rentalHistory()">Invoices</button>
             </div>
         `;
     }
