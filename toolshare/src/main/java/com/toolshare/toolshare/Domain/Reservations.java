@@ -46,7 +46,6 @@ public class Reservations {
     private List<ToolsEquipmentConstruction> toolsECList;
 
     @ManyToOne
-    @JsonIgnore
     @JoinColumn(nullable = false)
     private Persons id_user_client;
 

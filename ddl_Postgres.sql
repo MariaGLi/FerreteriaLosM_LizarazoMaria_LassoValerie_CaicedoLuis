@@ -32,7 +32,7 @@ CREATE TABLE Reservations (
     start_date DATE NOT NULL,
     end_date DATE NOT NULL,
     request_date DATE NOT NULL,
-    status VARCHAR(100) NOT NULL CHECK (status IN ('Pending', 'Approved', 'Canceled', 'Rejected', 'Completed')),
+    status VARCHAR(100) NOT NULL CHECK (status IN ('Pending', 'Approved', 'Canceled', 'Rejected', 'Completed', 'Return', 'ReturnReject', 'ReturnAccept')),
     id_user_client BIGINT NOT NULL REFERENCES Users(id)
 );
 

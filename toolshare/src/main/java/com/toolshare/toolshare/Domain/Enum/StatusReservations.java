@@ -5,6 +5,9 @@ public enum StatusReservations {
     Approved("Approved"),
     Rejected("Rejected"),
     Canceled("Canceled"),
+    Return("Return"),
+    ReturnAccept("ReturnAccept"),
+    ReturnReject("ReturnReject"),
     Completed("Completed");
 
     private String status;
