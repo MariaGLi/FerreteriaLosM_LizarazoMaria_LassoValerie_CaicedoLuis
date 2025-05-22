@@ -58,7 +58,7 @@ public class SecurityConfig {
         // origen permitido
         config.setAllowedOrigins(List.of("http://127.0.0.1:5500"));
         // metodos permitidos
-        config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE"));
+        config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "PATCH"));
         // cabeceras/headers permitidos
         config.setAllowedHeaders(List.of("*"));
 

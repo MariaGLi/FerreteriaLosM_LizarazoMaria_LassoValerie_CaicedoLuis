@@ -27,7 +27,7 @@ function showOptions(type){
         subMenu.innerHTML+=`
             <div class="optionsbtn">
                 <button onclick="toolsStatus()">State Tools</button>
-                <button>Report Damage</button>
+                <button onclick="reportDamage()">Report Damage</button>
             </div>
         `;
     }
