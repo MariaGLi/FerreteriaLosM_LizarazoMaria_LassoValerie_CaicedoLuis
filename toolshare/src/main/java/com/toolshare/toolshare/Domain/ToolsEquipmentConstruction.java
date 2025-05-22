@@ -32,16 +32,18 @@ public class ToolsEquipmentConstruction {
 
     @Column(length = 30, nullable = false)
     private String name;
-
+    
     @Column(length = 30, nullable = false)
     private String category;
-
+    
     @Column(nullable = false)
     private LocalDate date_register;
-
+    
     @Column(name = "price_day", nullable = false)
     private Double priceDay;
-
+    
+    @Column(nullable = false)
+    private String image;
 
     @Column(nullable = false, columnDefinition = "TEXT")
     private String description;
