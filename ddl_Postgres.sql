@@ -23,6 +23,7 @@ CREATE TABLE Tools_Equipment_Construction (
     date_register DATE NOT NULL,
     price_day DOUBLE PRECISION NOT NULL,
     description TEXT NOT NULL,
+    image VARCHAR(100) NOT NULL,
     status VARCHAR(100) CHECK (status IN ('Available', 'Rented', 'Damaged', 'Maintenance')),
     id_user_supplier_id BIGINT NOT NULL REFERENCES Users(id)
 );

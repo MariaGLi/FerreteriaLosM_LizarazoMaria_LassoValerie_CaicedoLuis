@@ -46,7 +46,7 @@ INSERT INTO Persons (name, last_name, cellphone, email, date_register, id_user_i
 ('Jean', 'Guerrero', '3018889900', 'jean.f@example.com', '2024-05-06', 20);
 
 --Tools_EquipmentConstruction
-INSERT INTO Tools_Equipment_Construction (type, name, category, date_register, price_day, description, status, id_user_supplier_id) VALUES
+/*INSERT INTO Tools_Equipment_Construction (type, name, category, date_register, price_day, description, status, id_user_supplier_id) VALUES
 ('Tool', 'Bosch Drill', 'Electric', '2023-01-15', 15000.00, '650W hammer drill', 'Available', 2),
 ('Tool', 'Makita Grinder', 'Electric', '2023-01-18', 18000.00, '1200W angle grinder', 'Available', 3),
 ('Tool', 'DeWalt Circular Saw', 'Electric', '2023-02-10', 22000.00, 'Fast cutting saw', 'Rented', 4),
@@ -67,6 +67,29 @@ INSERT INTO Tools_Equipment_Construction (type, name, category, date_register, p
 ('EquipmentConstruction', 'Electric Generator', 'Energy', '2023-08-15', 80000.00, '3500W gasoline generator', 'Damaged', 4),
 ('EquipmentConstruction', 'Reinforced Wheelbarrow', 'Transport', '2023-09-01', 10000.00, 'Metallic wheelbarrow', 'Available', 2),
 ('EquipmentConstruction', 'Tile Cutter', 'Cutting', '2023-09-15', 22000.00, 'Cuts ceramic and porcelain tiles', 'Available', 3);
+*/
+INSERT INTO Tools_Equipment_Construction 
+(type, name, category, date_register, price_day, description, image, status, id_user_supplier_id) VALUES
+('Tool', 'Bosch Drill', 'Electric', '2023-01-15', 15000.00, '650W hammer drill', 'https://www.bosch-pt.com.my/binary/ocsmedia/optimized/1434x828/o363996v54_9gsb_185-li_sos_06019K31K2.png', 'Available', 2),
+('Tool', 'Makita Grinder', 'Electric', '2023-01-18', 18000.00, '1200W angle grinder', 'https://m.media-amazon.com/images/I/61NF8sCW0WL._AC_SX679_.jpg', 'Available', 3),
+('Tool', 'DeWalt Circular Saw', 'Electric', '2023-02-10', 22000.00, 'Fast cutting saw', 'https://m.media-amazon.com/images/I/416TBX4P5LL._AC_US750_.jpg', 'Rented', 4),
+('Tool', 'Demolition Hammer', 'Electric', '2023-03-01', 25000.00, 'SDS-Max demolition hammer', 'https://clarkehandtools.com/wp-content/uploads/2023/06/CLDH0835-01-600x600.jpg', 'Available', 2),
+('Tool', 'Orbital Sander', 'Electric', '2023-03-05', 14000.00, 'Wood sander', 'https://tradelands.co.nz/wp-content/uploads/cache/b540d5501c85b94e35dae327b221db38.webp', 'Available', 3),
+('Tool', 'Air Compressor', 'Pneumatic', '2023-03-22', 30000.00, '50L compressor', 'https://www.peerlessproducts.com.au/cdn/shop/products/00070.png?v=1686021282&width=493', 'Damaged', 4),
+('Tool', 'Angle Grinder', 'Electric', '2023-04-03', 16000.00, '4½ inch grinder', 'https://media.rs-online.com/image/upload/bo_1.5px_solid_white,b_auto,c_pad,dpr_1.5,f_auto,h_399,q_auto,w_710/c_pad,h_399,w_710/R8412246-01?pgw=1', 'Available', 2),
+('Tool', 'Rotary Hammer', 'Electric', '2023-04-15', 20000.00, 'Drill with rotation and hammering', 'https://5.imimg.com/data5/SELLER/Default/2020/10/DG/WM/GF/64238606/1-2-kg-rotary-hammer-1000x1000.jpg', 'Available', 3),
+('Tool', 'Laser Level', 'Measuring', '2023-05-01', 18000.00, 'Precision level', 'https://m.media-amazon.com/images/I/81-UzcxrrBL.jpg', 'Available', 4),
+('Tool', 'Heat Gun', 'Thermal', '2023-05-10', 12000.00, 'Hot air gun', 'https://http2.mlstatic.com/D_NQ_NP_819608-MCO54026499779_022023-O.webp', 'Available', 2),
+('EquipmentConstruction', 'Modular Scaffold', 'Height', '2023-06-01', 50000.00, '5m height scaffold', 'https://jumplyscaffolding.com/wp-content/uploads/elementor/thumbs/7ft-Rolling-Stair-Tower-q7xycvf1vx7szoe2tl82ba5h7wbfccdqdf8zn246dc.jpg', 'Rented', 3),
+('EquipmentConstruction', 'Concrete Mixer', 'Mixing', '2023-06-10', 60000.00, '320L drum', 'https://www.gclproducts.co.uk/wp-content/uploads/2023/04/SoRoTo-CMX-200-Concrete-Mixer.jpg', 'Available', 4),
+('EquipmentConstruction', 'Boom Crane', 'Lifting', '2023-06-15', 75000.00, 'Light lifting crane', 'https://crane101.mountaincrane.com/wp-content/uploads/2018/03/Crane_Multiplebooms.png', 'Available', 2),
+('EquipmentConstruction', 'Concrete Vibrator', 'Compaction', '2023-07-01', 35000.00, '220V vibrator', 'https://m.media-amazon.com/images/I/61TeU6wQw9L._AC_SX679_.jpg', 'Available', 3),
+('EquipmentConstruction', 'Plate Compactor', 'Compaction', '2023-07-12', 65000.00, 'Gasoline compactor', 'https://m.media-amazon.com/images/I/81eYG7AbJfL._AC_SX679_.jpg', 'Maintenance', 4),
+('EquipmentConstruction', 'Extension Ladder', 'Access', '2023-08-01', 20000.00, 'Up to 10 meters', 'https://m.media-amazon.com/images/I/410ed-rWaAL._AC_US750_.jpg', 'Available', 2),
+('EquipmentConstruction', 'Water Pump', 'Hydraulic', '2023-08-05', 30000.00, '1HP submersible pump', 'https://m.media-amazon.com/images/I/71o2NcOPFUL._AC_SL1500_.jpg', 'Available', 3),
+('EquipmentConstruction', 'Electric Generator', 'Energy', '2023-08-15', 80000.00, '3500W gasoline generator', 'https://media.hswstatic.com/eyJidWNrZXQiOiJjb250ZW50Lmhzd3N0YXRpYy5jb20iLCJrZXkiOiJnaWZcL0hvdy10by1idWlsZC1hbi1lbGVjdHJpYy1nZW5lcmF0b3IuanBnIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjo4Mjh9fX0=', 'Damaged', 4),
+('EquipmentConstruction', 'Reinforced Wheelbarrow', 'Transport', '2023-09-01', 10000.00, 'Metallic wheelbarrow', 'https://ferrelaeconomica.com.mx/wp-content/uploads/2020/06/CAT-60X.jpg', 'Available', 2),
+('EquipmentConstruction', 'Tile Cutter', 'Cutting', '2023-09-15', 22000.00, 'Cuts ceramic and porcelain tiles', 'https://m.media-amazon.com/images/I/41XbSk9F+tL._AC_US750_.jpg', 'Available', 3);
 
 --Reservations
 INSERT INTO Reservations (start_date, end_date, request_date, status, id_user_client_id) VALUES  
