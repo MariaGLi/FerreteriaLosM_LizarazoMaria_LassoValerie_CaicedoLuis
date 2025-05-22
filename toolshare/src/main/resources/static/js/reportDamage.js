@@ -41,7 +41,7 @@ function reportDamage(){
                             <div class="end_date"><strong>End date: </strong>${e.reservation.end_date}</div>
                         </div>
                         <div class="ContUpdate">
-                            <button class="button" onclick="showForm(${e.id})">Update</button>
+                            <button class="button${e.id}" onclick="showForm(${e.id})">Update</button>
                         </div>
                     </div>
                 `;
@@ -55,7 +55,9 @@ function reportDamage(){
         console.error("An error occurred while connecting to the server.")
     )
 }
+let button = "";
 function showForm(id){
+    
     let form = document.getElementById("form");
     form.innerHTML=`
         <div class="update">
@@ -77,14 +79,14 @@ function showForm(id){
         </div>
     `;
 
-    let button = document.querySelector('.button');
+    button = document.querySelector(`.button${id}`);
 
-    document.addEventListener('click',function(e) {
-        if (!form.contains(e.target) && !button.contains(e.target)) {
-            form.innerHTML=``;
-        }
-    });
 }
+document.addEventListener('click',function(e) {
+    if (!form.contains(e.target) && !button.contains(e.target)) {
+        form.innerHTML=``;
+    }
+});
 function updateDamage(id) {
     let descrip = document.querySelector(".descrip").value;
     let solution_date = document.querySelector(".solutionDate").value;   
@@ -118,6 +120,9 @@ function updateDamage(id) {
     .then(json =>{
         if (json) {
             alert("Damage Report has been update");
+            let form = document.getElementById("form");
+            form.innerHTML=``;
+            reportDamage();
         }
         else{
             alert("An error occurred while registering")
