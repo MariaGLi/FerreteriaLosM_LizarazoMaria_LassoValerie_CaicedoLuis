@@ -17,23 +17,38 @@
             <div class="options">
                 <p class="title">Everything to build <br> and repair</p>
                 <div class="buttons">
-                    <button class="menuBtn" id="btnActive">Inventory</button>
+                    <button class="menuBtn" id="btnActive">Tools</button>
                     <button class="menuBtn">Reservations</button>
-                    <button class="menuBtn">Payments</button>
+                    <button class="menuBtn" onclick="ShowInvoices()">Invoices</button>
                 </div>
             </div>
             <div class="options2">
-                <button class="logout">Log out</button>
+                <a href="./login.html">
+                    <button class="logout" onclick="logout()">Log out</button>
+                </a>
             </div>
         </div>
         <div class="content">
-            <form action="/searchTool" method="get">
-                <input type="text" name="query" placeholder="Search...">
-                <button type="submit" id="SearchButton">Search</button>
-            </form>
-            <div class="users">
+            <input type="text" id="searchInput" placeholder="Search...">
+            <div class="tools">
                 
             </div>
+            <div id="addTool">
+                <form action="" method="post" class="form">
+                    <div class="newTool">
+                        <label for="startD">Start date</label>
+                        <input type="date" class="enterTool" id="startD" required>
+                    </div>
+                    <div class="newTool">
+                        <label for="andDate">And date</label>
+                        <input type="date" class="enterTool"  id="andDate" required>
+                    </div>
+                    <div id="selectedTools"></div>
+                    <button type="submit" id="send">Send</button>
+                </form>
+            </div>
+        
+            <div class="contInvoices"></div>
         </div>
     </div>
 </body>

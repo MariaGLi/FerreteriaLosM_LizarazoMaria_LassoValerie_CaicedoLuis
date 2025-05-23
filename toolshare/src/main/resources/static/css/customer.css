@@ -3,6 +3,7 @@
 }
 body{
     font-family: "Kanit", sans-serif;
+    background-color: #D9D9D9;
 }
 .menu{
     position: relative;
@@ -52,11 +53,9 @@ body{
     color: #D9D9D9;
 }
 .content{
-    background-color: #D9D9D9;
     display: flex;
-    justify-content:center;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     padding-left: 30px;
     padding-top: 1vw;
 }
@@ -79,7 +78,7 @@ h2{
     width: 70%;
     font-size: 1.3rem;
 }
-.users{
+.tools{
     max-width: 70%;
     margin-bottom: 3rem;
     margin-top: 1rem;
@@ -88,9 +87,18 @@ h2{
     flex-wrap: wrap;
     gap: 30px;
 }
-.user{
+#addTool{
+    display: none;
+}
+.toolss{
     background-color: white;
-    width: 120px;
+    width: 200px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+    text-align: center;
     padding: 1rem;
     border-radius: 6px;
 }
@@ -101,8 +109,25 @@ h2{
 }
 .name{
     font-size: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-top: 1rem;
     color: #535353;
+}
+.status{
+    margin-top: 5px;
+    padding: 5px 9px 5px 9px;
+    background-color: #D67929;
+    border-radius: 10px;
+    color: #D9D9D9;
+}
+.price{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
 }
 .info{
     font-family: "Kanit", sans-serif;
@@ -116,6 +141,9 @@ h2{
     width: 80px;
     margin-left: calc(50% - 40px);
 }
+.textPrice{
+    margin-top: 10px;
+}
 .select{
     color: #D67929;
 }
@@ -124,22 +152,145 @@ h2{
     background-color: #D9D9D9;
 }
 
-input{
-    width: 292px;
-}
 
-input, #SearchButton {
-    border: none;
+#searchInput {
+    width: 300px;
+    border: 1px solid #D67929;
     height: 25px;
     border-radius: 5px;
+    outline: none;
     font-size: 0.8rem;
     font-family: "Kanit", sans-serif;
 }
-
-#SearchButton{
-    width: 70px;
+.form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    background-color: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+.newTool{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+.enterTool{
+    border-radius: 5px;
+    height: 20px;
+    border: 1px solid #D67929;
+    outline: none;
+    color: #535353;
+    width: 150px;
+}
+#send, .send{
+    padding: 10px 25px 10px 25px;
     background-color: #D67929;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.dates{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+h4{
+    color: #D67929;
+}
+.logout{
+    position: relative;
+    font-family: "Kanit", sans-serif;
+    background-color: #D67929;
+    border: none;
+    padding: 0.5rem 1rem;
     color: white;
+    border-radius: 5px;
+    font-size: 0.8rem;
+}
+.paid{
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.reservation{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    background-color: white;
+    width: 300px;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #535353;
+}
+#send:hover{
+    background-color: #D67929;
+
+}
+.descriptionTool{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    text-align: center;
+}
+.invoice{
+    width: 200px;
+    padding: 10px;
+    height: auto;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.contInvoices{
+    max-width: 70%;
+    margin-bottom: 3rem;
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+.dataInvoice, .fechadecreacion{
+    margin-top: 3px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.view{
+    padding: 5px;
+    margin-top: 10px;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    background-color: #D67929;
+    cursor: pointer;
+}
+.addButton{
+    padding: 5px;
+    border-radius: 10px;
+    border: 1px solid #535353;
+}
+.addCont{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+.view:hover{
+    background-color: #d5853f;
 }
 @media only screen and (max-width: 1120px){
     .herramientas{

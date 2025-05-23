@@ -2,6 +2,7 @@ package com.toolshare.toolshare.Infraestructure.Repository.impl;
 
 import java.util.Date;
 
+import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -34,11 +35,14 @@ public class AuthServiceImpl implements AuthService {
     public AuthResponse login(LoginRequest request) {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
         UserDetails user = usersRepository.findByUsername(request.getUsername()).orElseThrow();
+        Users userID = usersRepository.findByUsername(request.getUsername()).orElseThrow();
         String token = jwtService.getToken(user);
         String type = user.getAuthorities().toString();
+        //Long id = user.+
         return AuthResponse.builder()
         .token(token)
         .type(type.substring(6,type.length()-1))
+        .id(userID.getId())
         .build();
     }
 
