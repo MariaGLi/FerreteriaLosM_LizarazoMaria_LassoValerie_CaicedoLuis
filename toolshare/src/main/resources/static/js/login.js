@@ -41,6 +41,7 @@ function login(){
                     alert("session started as Customer");
                     form.setAttribute('action',"./customer.html");
                     localStorage.setItem('token',json.token);
+                    localStorage.setItem('id', json.id);
                     form.removeEventListener("submit",arguments.callee);
                     form.submit();
                 }

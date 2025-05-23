@@ -1,5 +1,6 @@
 package com.toolshare.toolshare.Infraestructure.Repository.RepositoryIMPL;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +38,7 @@ public class custReservImpl implements custReservationService{
         Reservations newReservations = new Reservations();
         newReservations.setStart_date(reservDto.getStartDate());
         newReservations.setEnd_date(reservDto.getEndDate());
-        newReservations.setRequest_date(reservDto.getRequestDate());
+        newReservations.setRequest_date(LocalDate.now());
         newReservations.setStatus(StatusReservations.Pending);
 
         newReservations.setId_user_client(idClient);
