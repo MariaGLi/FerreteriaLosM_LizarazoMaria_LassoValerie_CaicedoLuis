@@ -34,7 +34,7 @@ function showOptions(type){
     if (type=="Reports") {
         subMenu.innerHTML+=`
             <div class="optionsbtn">
-                <button>Most Rented</button>
+                <button onclick="mostRented()">Most Rented</button>
             </div>
         `;
     }

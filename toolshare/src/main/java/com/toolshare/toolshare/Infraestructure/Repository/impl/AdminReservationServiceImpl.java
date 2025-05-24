@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.toolshare.toolshare.Application.Service.AdminReservationService;
 import com.toolshare.toolshare.Domain.Reservations;
+import com.toolshare.toolshare.Domain.request.DateRentRequest;
 import com.toolshare.toolshare.Domain.response.MostRentedResponse;
 import com.toolshare.toolshare.Domain.response.PersonResponse;
 import com.toolshare.toolshare.Domain.response.RentalHistoryResponse;
@@ -51,8 +52,14 @@ public class AdminReservationServiceImpl implements AdminReservationService {
     }
 
     @Override
-    public List<MostRentedResponse> getMostRented(LocalDate date) {
-        List<MostRentedResponse> mostRented = toolsECRepository.findMostRented(date);
+    public List<MostRentedResponse> getMostRented(DateRentRequest dateRent) {
+        List<MostRentedResponse> mostRented ;
+        if (dateRent.getStartDate()!=null && dateRent.getEndDate()!=null) {
+            mostRented = toolsECRepository.findMostRentedByDate(dateRent.getStartDate(),dateRent.getEndDate());
+        }
+        else{
+            mostRented = toolsECRepository.findMostRented();
+        }
         return mostRented;
     }
     
