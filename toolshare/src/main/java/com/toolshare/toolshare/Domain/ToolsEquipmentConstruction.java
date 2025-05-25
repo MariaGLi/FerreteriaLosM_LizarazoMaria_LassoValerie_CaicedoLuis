@@ -42,7 +42,7 @@ public class ToolsEquipmentConstruction {
     @Column(name = "price_day", nullable = false)
     private Double priceDay;
     
-    @Column(nullable = false)
+    @Column(nullable = false, length = 1000)
     private String image;
 
     @Column(nullable = false, columnDefinition = "TEXT")
@@ -69,14 +69,15 @@ public class ToolsEquipmentConstruction {
     }
 
     public ToolsEquipmentConstruction(Long id, TypeToolsEC type, String name, String category, LocalDate date_register,
-            Double priceday, String description, StatusToolsEC status, Persons id_user_supplier,
+            Double priceDay, String image, String description, StatusToolsEC status, Persons id_user_supplier,
             List<Reservations> reservations_list, List<ToolsInvoices> tools_invoices_list) {
         this.id = id;
         this.type = type;
         this.name = name;
         this.category = category;
         this.date_register = date_register;
-        this.priceDay = priceday;
+        this.priceDay = priceDay;
+        this.image = image;
         this.description = description;
         this.status = status;
         this.id_user_supplier = id_user_supplier;
@@ -132,6 +133,14 @@ public class ToolsEquipmentConstruction {
         this.priceDay = priceDay;
     }
 
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
     public String getDescription() {
         return description;
     }
@@ -171,4 +180,5 @@ public class ToolsEquipmentConstruction {
     public void setTools_invoices_list(List<ToolsInvoices> tools_invoices_list) {
         this.tools_invoices_list = tools_invoices_list;
     }
+
 }

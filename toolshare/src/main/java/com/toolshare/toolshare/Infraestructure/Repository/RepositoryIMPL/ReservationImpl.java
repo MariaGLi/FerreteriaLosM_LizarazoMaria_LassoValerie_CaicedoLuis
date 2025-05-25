@@ -29,6 +29,9 @@ public class ReservationImpl implements ReservationService{
 
     @Autowired
     private ToolsInvoiceRepository tInvoiceRepository;
+
+    @Autowired
+    private PaymentsRepository paymentsRepository;
     
     @Autowired
     private InvoicesRepository invoicesRepository;
@@ -84,7 +87,17 @@ public class ReservationImpl implements ReservationService{
         if(reservation== null || reservation.getToolsECList()== null){
             throw new RuntimeException("No tools found for this reservation");
         }
+        // payment
+        Payments payment= new Payments();
+        payment.setId_reservations(reservation);
+        payment.setPayment_date(LocalDate.now());
+        payment.setStatus(StatusPayments.Pending);
+        payment.setPayment_method("method");
+        payment.setPrice_total(0.0);
 
+        Payments SavedPayment= paymentsRepository.save(payment);
+        System.out.println("pay" + SavedPayment);
+        // invoice
         Long NumbreInvoice= invoicesRepository.findLastInvoiceNumber() + 1;
 
         Invoices invoice= new Invoices();
@@ -97,6 +110,7 @@ public class ReservationImpl implements ReservationService{
         invoice.setUrl_signature("https://firma.toolshare.com/1001");
         invoice.setRegistration_date(LocalDate.now());
         invoice.setNumber_invoice(NumbreInvoice);
+        invoice.setId_payments(SavedPayment);
         invoice.setId_client(reservation.getId_user_client());
 
         Invoices savedInvoices=  invoicesRepository.save(invoice);
@@ -122,7 +136,10 @@ public class ReservationImpl implements ReservationService{
             toolsList.add(toolsInvoices);
         }
         tInvoiceRepository.saveAll(toolsList);
+        payment.setPrice_total(total);
         savedInvoices.setAnd_total(total);
+        System.out.println("facturaaaaaaaaaa" +invoice);
+        System.out.println("pagooooo" + payment);
         return invoicesRepository.save(invoice);
     }
     

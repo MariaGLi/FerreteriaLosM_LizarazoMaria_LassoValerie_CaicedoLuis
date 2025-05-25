@@ -20,6 +20,7 @@
                     <button class="menuBtn" id="btnActive">Tools</button>
                     <button class="menuBtn">Reservations</button>
                     <button class="menuBtn" onclick="ShowInvoices()">Invoices</button>
+                    <button class="menuBtn" onclick="showPayByStatusPending()">Payments</button>
                 </div>
             </div>
             <div class="options2">
@@ -29,12 +30,12 @@
             </div>
         </div>
         <div class="content">
+            <div class="paySection"></div>
             <input type="text" id="searchInput" placeholder="Search...">
-            <div class="tools">
-                
-            </div>
+            <div class="tools"></div>
             <div id="addTool">
                 <form action="" method="post" class="form">
+                    <p class="text">Reservation</p>
                     <div class="newTool">
                         <label for="startD">Start date</label>
                         <input type="date" class="enterTool" id="startD" required>

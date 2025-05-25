@@ -13,6 +13,9 @@ body{
     height: 18vw;
     min-height: 12.6rem;
 }
+.imgTools{
+    width: 70%;
+}
 .herramientas{
     width: 100vw;
     min-width: 70rem;
@@ -90,7 +93,7 @@ h2{
 .toolss{
     background-color: white;
     width: 120px;
-    height: 150px;
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content:center;
@@ -195,6 +198,7 @@ h4{
     padding: 0.5rem 1rem;
     color: white;
     border-radius: 5px;
+    cursor: pointer;
     font-size: 0.8rem;
 }
 .paid{
@@ -236,8 +240,8 @@ h4{
         padding: 0.3rem 0.6rem;
         font-size: 0.8rem;
         max-width: 7rem;
-    }
-    .options{
+        }
+        .options{
         justify-content: end;
         padding: 1rem;
         gap: 10px;
