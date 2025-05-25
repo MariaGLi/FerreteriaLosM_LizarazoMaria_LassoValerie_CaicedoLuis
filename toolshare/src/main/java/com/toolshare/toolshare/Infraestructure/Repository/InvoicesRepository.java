@@ -10,6 +10,4 @@ import com.toolshare.toolshare.Domain.Persons;
 public interface InvoicesRepository extends JpaRepository<Invoices, Long>{
     @Query("SELECT COALESCE(MAX(i.number_invoice), 0) FROM Invoices i")
     Long findLastInvoiceNumber();
-
-    Invoices findByIdClient(Persons id);
 }

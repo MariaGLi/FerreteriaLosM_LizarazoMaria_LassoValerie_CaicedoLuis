@@ -21,13 +21,10 @@ public class Payments {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
     private String payment_method;
 
-    @Column(nullable = false)
     private Double price_total;
 
-    @Column(nullable = false)
     private LocalDate payment_date;
 
     @Enumerated(EnumType.STRING)
@@ -35,7 +32,6 @@ public class Payments {
     private StatusPayments status;
 
     @OneToOne
-    @JsonIgnore
     @JoinColumn(nullable = false)
     private Reservations id_reservations;
 

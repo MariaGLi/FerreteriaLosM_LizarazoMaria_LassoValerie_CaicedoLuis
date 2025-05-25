@@ -13,6 +13,8 @@ public class ToolsECRequest{
     private LocalDate dateRegister;
     private Double priceDay;
     private String description;
+    private String image;
+
     
     public TypeToolsEC getType() {
         return type;
@@ -55,6 +57,12 @@ public class ToolsECRequest{
     }
     public void setSupplierId(Long supplierId) {
         this.supplierId = supplierId;
+    }
+    public String getImage() {
+        return image;
+    }
+    public void setImage(String image) {
+        this.image = image;
     }
 }
 

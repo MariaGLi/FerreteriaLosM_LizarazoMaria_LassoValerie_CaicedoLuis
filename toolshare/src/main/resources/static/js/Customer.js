@@ -5,7 +5,7 @@ let selectTools=[]
 
 document.addEventListener("DOMContentLoaded", () =>{
     getAllTools()
-    console.log(localStorage.getItem("id"))
+    console.log(localStorage.getItem("id")) // id client
     const searchInput= document.getElementById("searchInput");
     
     searchInput.addEventListener("input", function(){
@@ -57,26 +57,35 @@ menuBtn.forEach(e => {
     e.addEventListener("click",function() {
         menuBtn.forEach(x =>  x.removeAttribute("id"));
             e.setAttribute("id","btnActive");
-
+            
             const section= e.textContent.trim()
             if(section === "Reservations"){
-                
                 document.getElementById("searchInput").style.display= "none"
                 document.querySelector(".tools").style.display="none"
                 document.getElementById("addTool").style.display="block"
                 document.querySelector(".contInvoices").style.display="none"
-                
+                document.querySelector(".paySection").style.display="none"
             }
             if (e.textContent.trim()=="Tools") {
                 document.getElementById("searchInput").style.display= "block";
                 document.querySelector(".tools").style.display="flex"
                 document.getElementById("addTool").style.display="none"
+                document.querySelector(".contInvoices").style.display="none"
+                document.querySelector(".paySection").style.display="none"
             }
             if (e.textContent.trim()=="Invoices") {
                 document.querySelector(".tools").style.display="none"
                 document.getElementById("addTool").style.display="none"
                 document.getElementById("searchInput").style.display= "none"
                 document.querySelector(".contInvoices").style.display="flex"
+                document.querySelector(".paySection").style.display="none"
+            }
+            if(e.textContent.trim()=="Payments"){
+                document.querySelector(".tools").style.display="none"
+                document.getElementById("addTool").style.display="none"
+                document.getElementById("searchInput").style.display= "none"
+                document.querySelector(".contInvoices").style.display="none"
+                document.querySelector(".paySection").style.display="block"
             }
     })
 })
@@ -101,7 +110,7 @@ function renderSelectedT() {
         contentUsers.innerHTML += `
             <div class="selectedTool">
                 <p>${t.name} - ${t.priceDay}</p>
-                <button onclick="removeTool(${t.id})">Delete</button>
+                <button onclick="removeTool(${t.id})" class="delete">Delete</button>
             </div>
         `
     })
@@ -117,8 +126,6 @@ function removeTool(id) {
     }
     
 }
-
-
 
 function getAllTools() {
     let link = "http://localhost:8080/api/customer/toolsAvailable";
@@ -156,11 +163,15 @@ function renderTools(list){
     let contentUsers = document.querySelector(".tools");
     contentUsers.innerHTML = ``;
     list.forEach(e => {
+        console.log(e)
+        console.log(e.image)
         contentUsers.innerHTML += `
         <div class="toolss">
-            <div class="addCont"><button class="addButton" data-id="${e.id}">+</button></div>
+            <div class="addCont">
+                <button class="addButton" data-id="${e.id}">+</button>
+            </div>
             <div class="name"><h2>${e.name}</h2></div>  
-            <img src="../img/logoM3-removebg-preview.png" alt="">          
+            <img src="${e.image}" alt="" class="img">          
             <div class="name">${e.category}<br>${e.description}</br><br>${e.type}</br></div>                
             <div class="price">
                 <h4 class="textPrice">$${e.priceDay}</h4>
@@ -186,9 +197,17 @@ function ShowInvoices() {
     })
     .then(res=> res.json())
     .then(json=>{
+        const userid= parseInt(localStorage.getItem("id"))
+        const userInvoice= json.filter(f=> f.id_client && f.id_client.id== userid)
         let cont= document.querySelector(".contInvoices")
         cont.innerHTML =``
-        json.forEach(e=>{
+        console.log(userInvoice)
+        if(userInvoice.length===0){
+            cont.innerHTML=`<p>no hay facturas disponibles para este usuario</p>`
+            return;
+        }
+        
+        userInvoice.forEach(e=>{
             cont.innerHTML+= `
                 <div class="invoice">
                     <h4>${e.number_invoice}</h4>
@@ -201,7 +220,9 @@ function ShowInvoices() {
                         <h6>${e.registration_date}</h6>
                     </div>
                     
-                    <button type="button" class="view" onclick="downloadInvoice(${e.id})">View Invoice</button>
+                    <button type="button" class="view" onclick="downloadInvoice(${e.id})">
+                            <img src="../images/icons8-descargar-96.png" alt="" class="imgDownload">
+                    </button>
                 </div>
             `
         })
@@ -226,5 +247,92 @@ function downloadInvoice(idInvoice) {
         a.click()
         a.remove()
     })
+    .catch(error =>
+        console.error("An error occurred while connecting to the server.", error)
+    )
+}
 
+function showPayByStatusPending() {
+    fetch("http://localhost:8080/pay/payPending", {
+        method: 'GET',
+        headers:{
+            'Authorization': `Bearer ${localStorage.getItem("token")}`,
+            'Content-Type': 'application/json; charset=UTF-8'
+        }
+    })
+    .then(res=> res.json())
+    .then(json=>{
+        const userId= parseInt(localStorage.getItem("id"))
+
+        const userPayment= json.filter(p=>
+            p.id_reservations &&
+            p.id_reservations.id_user_client &&
+            p.id_reservations.id_user_client.id===userId
+        )
+
+        let payCont = document.querySelector(".paySection")
+        payCont.innerHTML = ""
+        console.log(json)
+        if (userPayment.length===0) {
+            alert("there are no outstanding payments")
+            return
+        }
+        
+        userPayment.forEach(f=>{
+            console.log(f)
+            let idPayment= f.id
+            payCont.innerHTML+=`
+            <form class="pay">
+                <p class="text">Pay</p>
+                <div class="contPrice">
+                    <p>Price</p>
+                    <p>${f.price_total}</p>
+                </div>
+                <div class="contMethod">
+                    <label for="method">
+                        <img src="../images/icons8-tarjetas-bancarias-100.png" alt="" class="methodImg">
+                    </label>
+                    <select id="select" class="enterMethod" required>
+                        <option value="Nequi">Nequi</option>
+                        <option value="Bancolombia">Bancolombia</option>
+                        <option value="Davivienda">Davivienda</option>
+                        <option value="PopularBank">Popular Bank</option>
+                    </select>
+                </div>
+                <button type="button" id="send" ">Send</button>
+            </form>
+            `
+            document.getElementById("send").addEventListener("click", function (f){
+                f.preventDefault();
+                const pay= {
+                    "id": idPayment,
+                    "payment_method": document.getElementById("select").value
+                }
+
+                fetch(`http://localhost:8080/pay/payBy/${idPayment}`,{
+                    method: "PUT",
+                    headers: {
+                        'Authorization': `Bearer ${localStorage.getItem("token")}`,
+                        'Content-Type': 'application/json; charset=UTF-8'
+                    },
+                    body: JSON.stringify(pay)
+                })
+                .then(res=> res.json())
+                .then(json=>{
+                    alert("Payment has been successfully completed")
+                })
+                .catch(error =>
+                    console.error("An error occurred while connecting to the server.", error)
+                )
+            })
+        })
+    })
+    .catch(error =>
+        console.error("An error occurred while connecting to the server.", error)
+    )
+}
+
+function sendPay(id) {
+
+    
 }

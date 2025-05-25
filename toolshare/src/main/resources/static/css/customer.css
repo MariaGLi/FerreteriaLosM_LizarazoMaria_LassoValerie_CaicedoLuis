@@ -101,6 +101,7 @@ h2{
     text-align: center;
     padding: 1rem;
     border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 .user img{
     width: 80px;
@@ -108,6 +109,7 @@ h2{
     margin-left: calc(50% - 40px);
 }
 .name{
+    width: 100%;
     font-size: 15px;
     display: flex;
     justify-content: center;
@@ -154,23 +156,32 @@ h2{
 
 
 #searchInput {
-    width: 300px;
+    width: 400px;
     border: 1px solid #D67929;
     height: 25px;
     border-radius: 5px;
+    margin-bottom: 30px;
     outline: none;
     font-size: 0.8rem;
     font-family: "Kanit", sans-serif;
+}
+.text{
+    font-size: 2rem;
+    color: #D67929;
+    margin-bottom: 20px;
+    text-align: center;
 }
 .form{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 40px;
     width: 400px;
     background-color: white;
-    padding: 15px;
+    padding: 30px;
     border-radius: 10px;
+    margin-bottom: 50px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 .newTool{
@@ -203,6 +214,18 @@ h2{
 h4{
     color: #D67929;
 }
+.view{
+    width: 40px;
+    height: 30px;
+    margin-top: 10px;
+    color: white;
+    border: none;
+    background-color: white;
+    cursor: pointer;
+}
+.imgDownload{
+    width: 25px;
+}
 .logout{
     position: relative;
     font-family: "Kanit", sans-serif;
@@ -210,8 +233,18 @@ h4{
     border: none;
     padding: 0.5rem 1rem;
     color: white;
+    cursor: pointer;
     border-radius: 5px;
     font-size: 0.8rem;
+}
+.delete{
+    margin-top: 8px;
+    border: none;
+    color: #ff0000;
+    background-color: #eaeaea;
+    cursor: pointer;
+    margin-bottom: 10px;
+    width: 70px;
 }
 .paid{
     width: 100%;
@@ -244,6 +277,46 @@ h4{
     flex-wrap: wrap;
     text-align: center;
 }
+.methodImg{
+    width: 30px;
+}
+.paySection{
+    display: none;
+}
+.pay{
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid #D67929;
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 30px;
+    padding: 10px;
+}
+.contPrice{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.enterMethod{
+    width: 120px;
+    border: 1px solid #d5853f;
+}
+.contMethod{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.contInvoiceNum{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
 .invoice{
     width: 200px;
     padding: 10px;
@@ -254,6 +327,7 @@ h4{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 .contInvoices{
     max-width: 70%;
@@ -270,19 +344,20 @@ h4{
     display: flex;
     justify-content: space-between;
 }
-.view{
-    padding: 5px;
-    margin-top: 10px;
-    color: white;
-    border-radius: 5px;
-    border: none;
-    background-color: #D67929;
-    cursor: pointer;
+
+.img{
+    width: 40%;
 }
 .addButton{
-    padding: 5px;
-    border-radius: 10px;
-    border: 1px solid #535353;
+    margin-top: -10px;
+    margin-right: -10px;
+    width: 40px;
+    border-radius: 100%;
+    border: none;
+    font-size: 2.5rem;
+    cursor: pointer;
+    color: #D67929;
+    background-color: white;
 }
 .addCont{
     width: 100%;
@@ -291,6 +366,15 @@ h4{
 }
 .view:hover{
     background-color: #d5853f;
+}
+.selectedTool{
+    width: 400px;
+    padding: 2px;
+    margin-bottom: 15px;
+    background-color: #eaeaea;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 @media only screen and (max-width: 1120px){
     .herramientas{

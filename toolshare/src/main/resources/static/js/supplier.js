@@ -26,21 +26,21 @@ menuBtn.forEach(e => {
                                 <label for="category">Category</label>
                                 <input type="text" class="enterTool" id="category" required>
                             </div>
-                            <div class="newTool">
+                            <div class="newTool" required>
                                 <label for="dateRegister">Date Register</label>
                                 <input type="date" class="enterTool"  id="dateRegister">
                             </div>
                             <div class="newTool">
                                 <label for="price">$</label>
-                                <input type="text" class="enterTool"  id="price">
+                                <input type="text" class="enterTool"  id="price" required>
                             </div>
                             <div class="newTool">
                                 <label for="description">Description</label>
-                                <input type="text" class="enterTool" id="description">
+                                <input type="text" class="enterTool" id="description" required>
                             </div>
                             <div class="newTool">
                                 <label for="urlImg">Url image</label>                        
-                                <input type="url"class="enterTool"  id="urlImg">
+                                <input type="url"class="enterTool"  id="urlImg" required>
                             </div>
                             <button type="submit" id="send">Send</button>
                         </form>
@@ -50,8 +50,8 @@ menuBtn.forEach(e => {
                 
                 document.getElementById("send").addEventListener("click", function (f){
                     f.preventDefault();
-                    console.log(localStorage.getItem("supplierId"));
-                
+                    
+                    console.log(document.getElementById("urlImg").value)
                     const addTool= {
                         
                         "supplierId": 21,
@@ -60,7 +60,8 @@ menuBtn.forEach(e => {
                         "category": document.getElementById("category").value.trim(),
                         "dateRegister": document.getElementById("dateRegister").value,
                         "priceDay": document.getElementById("price").value,
-                        "description": document.getElementById("description").value.trim()
+                        "description": document.getElementById("description").value.trim(),
+                        "image": document.getElementById("urlImg").value.trim()
                     };
 
                     fetch("http://localhost:8080/InventoryManagement/toolsAdd",{
@@ -79,11 +80,11 @@ menuBtn.forEach(e => {
                             document.getElementById("addTool").style.display = "none";
                             document.getElementById("searchInput").style.display = "block";
                         } else {
-                            alert("no añadió")
+                            alert("the tool was added")
                         }
                     })
                     .catch(error => {
-                        alert("error en la conexión", error);
+                        alert("connection error", error);
                     });
                 });
 
@@ -349,7 +350,6 @@ menuBtn.forEach(e => {
 let toolsInput= [];
 document.addEventListener("DOMContentLoaded", () =>{
     getAllTools();
-
     const searchInput= document.getElementById("searchInput");
 
     searchInput.addEventListener("input", function(){
@@ -399,7 +399,7 @@ function renderTools(list){
     list.forEach(e => {
         contentUsers.innerHTML += `
         <div class="toolss">
-            <img src="../img/logoM3-removebg-preview.png" alt="">
+            <img src="${e.image}" alt="" class="imgTools">
             <div class="name">${e.name}</div>
             <div class="status">${e.status}</div>
         </div>

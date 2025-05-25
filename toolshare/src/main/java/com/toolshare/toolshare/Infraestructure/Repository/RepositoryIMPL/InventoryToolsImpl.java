@@ -45,6 +45,7 @@ public class InventoryToolsImpl implements InventoryToolsService{
         tool.setType(dto.getType());
         tool.setStatus(StatusToolsEC.Available);
         tool.setId_user_supplier(supplier);
+        tool.setImage(dto.getImage());
 
         return repository.save(tool);
     }
