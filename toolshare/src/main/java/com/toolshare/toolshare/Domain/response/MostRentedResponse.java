@@ -1,5 +1,7 @@
 package com.toolshare.toolshare.Domain.response;
 
+import java.math.BigDecimal;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,4 +17,5 @@ public class MostRentedResponse {
     private String description;
     private Long quantity;
     private Double total;
+    private BigDecimal percentage;
 }

@@ -18,16 +18,37 @@ public interface ToolsECRepository extends JpaRepository<ToolsEquipmentConstruct
     List<ToolsEquipmentConstruction> findByStatus(StatusToolsEC status);
     List<ToolsEquipmentConstruction>findAllByOrderByPriceDayAsc();
 
+    //SUM(COUNT(*)) OVER () calcula el total de todas las filas
     @Query(value = """
-        SELECT t.id, t.name, t.description, count(*), sum(t.price_day*(r.end_date - r.start_date))
+        SELECT t.id, t.name, t.description, COUNT(*),
+        SUM(t.price_day * (r.end_date - r.start_date)),
+        ROUND(COUNT(*) * 100.0 / SUM(COUNT(*)) OVER (),2)
         FROM tools_equipment_construction t
         INNER JOIN reservations_tools_equipment_constructions rt
         ON t.id = rt.id_tools_equipment_contruction
         INNER JOIN reservations r
         ON rt.id_reservation = r.id
         WHERE r.status = 'Completed'
-        AND r.start_date BETWEEN :date AND CURRENT_DATE GROUP BY 1
+        AND r.start_date BETWEEN :startDate AND :endDate
+        GROUP BY 1
+        ORDER BY 4 DESC;
     """,
     nativeQuery = true)
-    List<MostRentedResponse> findMostRented(@Param("date") LocalDate date);
+    List<MostRentedResponse> findMostRentedByDate(@Param("startDate") LocalDate starDate,@Param("endDate") LocalDate endDate);
+
+    @Query(value = """
+        SELECT t.id, t.name, t.description, COUNT(*),
+        SUM(t.price_day * (r.end_date - r.start_date)),
+        ROUND(COUNT(*) * 100.0 / SUM(COUNT(*)) OVER (),2)
+        FROM tools_equipment_construction t
+        INNER JOIN reservations_tools_equipment_constructions rt
+        ON t.id = rt.id_tools_equipment_contruction
+        INNER JOIN reservations r
+        ON rt.id_reservation = r.id
+        WHERE r.status = 'Completed'
+        GROUP BY 1
+        ORDER BY 4 DESC;
+    """,
+    nativeQuery = true)
+    List<MostRentedResponse> findMostRented();
 }

@@ -11,6 +11,7 @@ import com.toolshare.toolshare.Application.Service.PersonService;
 import com.toolshare.toolshare.Application.Service.RentalInvoiceService;
 import com.toolshare.toolshare.Application.Service.ReservationService;
 import com.toolshare.toolshare.Domain.request.DamageReportUpdateRequest;
+import com.toolshare.toolshare.Domain.request.DateRentRequest;
 import com.toolshare.toolshare.Domain.response.DamageReportResponse;
 import com.toolshare.toolshare.Domain.response.DamageReportUpdateResponse;
 import com.toolshare.toolshare.Domain.response.InvoiceResponse;
@@ -82,8 +83,8 @@ public class AdminController {
     }
     
     @PostMapping("/mostRented")
-    public ResponseEntity<List<MostRentedResponse>> getMostRented(@RequestBody @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
-        return ResponseEntity.ok(adminReservationService.getMostRented(date));
+    public ResponseEntity<List<MostRentedResponse>> getMostRented(@RequestBody DateRentRequest dateRent) {
+        return ResponseEntity.ok(adminReservationService.getMostRented(dateRent));
     }
     
     
