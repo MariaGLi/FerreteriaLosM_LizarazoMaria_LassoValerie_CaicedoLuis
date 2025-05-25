@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToolsShore</title>
+    <link rel="stylesheet" href="../css/customer.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link rel="icon" type="image.png" href="../images/logoM3-removebg-preview.png">
+</head>
+<body>
+    <div class="container">
+        <div class="menu">
+            <img class="herramientas" src="../images/tools.png" alt="">
+            <div class="options">
+                <p class="title">Everything to build <br> and repair</p>
+                <div class="buttons">
+                    <button class="menuBtn" id="btnActive">Tools</button>
+                    <button class="menuBtn">Reservations</button>
+                    <button class="menuBtn" onclick="ShowInvoices()">Invoices</button>
+                    <button class="menuBtn" onclick="showPayByStatusPending()">Payments</button>
+                </div>
+            </div>
+            <div class="options2">
+                <a href="./login.html">
+                    <button class="logout" onclick="logout()">Log out</button>
+                </a>
+            </div>
+        </div>
+        <div class="content">
+            <div class="paySection"></div>
+            <input type="text" id="searchInput" placeholder="Search...">
+            <div class="tools"></div>
+            <div id="addTool">
+                <form action="" method="post" class="form">
+                    <p class="text">Reservation</p>
+                    <div class="newTool">
+                        <label for="startD">Start date</label>
+                        <input type="date" class="enterTool" id="startD" required>
+                    </div>
+                    <div class="newTool">
+                        <label for="andDate">And date</label>
+                        <input type="date" class="enterTool"  id="andDate" required>
+                    </div>
+                    <div id="selectedTools"></div>
+                    <button type="submit" id="send">Send</button>
+                </form>
+            </div>
+        
+            <div class="contInvoices"></div>
+        </div>
+    </div>
+</body>
+<script src="../js/Customer.js"></script>
+</html>

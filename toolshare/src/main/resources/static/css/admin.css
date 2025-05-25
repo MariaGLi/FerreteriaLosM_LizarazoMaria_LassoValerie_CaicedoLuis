@@ -1,0 +1,180 @@
+*{
+    margin: 0;
+}
+body{
+    font-family: "Kanit", sans-serif;
+    background-color: #D9D9D9;
+}
+button{
+    cursor: pointer;
+}
+.menu{
+    position: relative;
+    width: 100vw;
+    display: flex;
+    height: 18vw;
+    min-height: 12.6rem;
+    overflow: hidden;
+}
+.herramientas{
+    width: 100vw;
+    min-width: 70rem;
+    min-height: 12.6rem;
+    position: absolute;
+}
+.options{
+    position: relative;
+    width: 70%;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.options2{
+    position: relative;
+    width: 30%;
+    padding: 1rem;
+    text-align: end;
+}
+.logout{
+    position: relative;
+    font-family: "Kanit", sans-serif;
+    background-color: #D67929;
+    border: none;
+    padding: 0.5rem 1rem;
+    color: white;
+    border-radius: 5px;
+    font-size: 0.8rem;
+}
+.buttons{
+    display: flex;
+    flex-direction: row;
+    gap: 7px;
+}
+.menu .menuBtn{
+    position: relative;
+    font-family: "Kanit", sans-serif;
+    background-color: #D67929;
+    border: none;
+    padding: 0.5rem 1rem;
+    color: white;
+    border-radius: 5px;
+    font-size: 0.8rem;
+}
+.menu p{
+    font-size: clamp(1rem,3vw,2.5rem);
+    font-weight: 700;
+    color: #D9D9D9;
+}
+.content{
+    background-color: #D9D9D9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.filters{
+    width: 70%;
+    min-width: 22rem;
+    margin-top: 1rem;
+    display: flex;
+    justify-content: end;
+    gap: 10px;
+}
+.filters button{
+    padding: 0.4rem 0.8rem;
+    border: none;
+    font-family: "Kanit", sans-serif;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+h2{
+    color: #535353;
+    width: 70%;
+    min-width: 22rem;
+    font-size: 1.3rem;
+    margin-top: 1rem;
+}
+.users{
+    max-width: 70%;
+    min-width: 22rem;
+    margin-bottom: 3rem;
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+.user{
+    background-color: white;
+    width: 120px;
+    padding: 1rem;
+    border-radius: 6px;
+}
+.user img{
+    width: 80px;
+    border-radius: 50%;
+    margin-left: calc(50% - 40px);
+}
+.name{
+    font-size: 15px;
+    margin-top: 1rem;
+    color: #535353;
+}
+.info{
+    font-family: "Kanit", sans-serif;
+    margin-top: 1rem;
+    background-color: #D67929;
+    border: none;
+    padding: 0.5rem 1rem;
+    color: white;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    width: 80px;
+    margin-left: calc(50% - 40px);
+}
+.select{
+    color: #D67929;
+}
+#btnActive{
+    color:#535353;
+    background-color: #D9D9D9;
+}
+.optionsbtn{
+    background-color: white;
+    padding: 1rem;
+}
+.optionsbtn button{
+    border: none;
+    font-family: "Kanit", sans-serif;
+    color: #535353;
+}
+.optionsbtn button:hover{
+    text-decoration: underline;
+    color: #D67929;
+}
+.toolStatus{
+    width: 17rem;
+}
+
+@media only screen and (max-width: 1120px){
+    .herramientas{
+        left: calc(50vw - 35rem);
+    }
+}
+@media only screen and (max-width: 585px){
+    .buttons{
+        flex-direction: column;
+        gap: 10px;
+        width: 70%;
+    }
+    .menu button{
+        padding: 0.3rem 0.6rem;
+        font-size: 0.8rem;
+        max-width: 7rem;
+    }
+    .options{
+        justify-content: end;
+        padding: 1rem;
+        gap: 10px;
+    }
+}

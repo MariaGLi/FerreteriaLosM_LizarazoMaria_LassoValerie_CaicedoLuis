@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-ToolshareApplication<toolshare>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.toolshare.toolshare.ToolshareApplication",
+            "projectName": "toolshare",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

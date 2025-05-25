@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/damageReport.css">
+    <link rel="stylesheet" href="../css/adminMostRented.css">
+    <link rel="stylesheet" href="../css/adminInvoice.css">
+    <link rel="stylesheet" href="../css/rentalhistory.css">
+    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Staatliches&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <div class="container">
+        <div class="menu">
+            <img class="herramientas" src="../images/tools.png" alt="">
+            <div class="options">
+                <p id="title">Everything to build <br> and repair</p>
+                <div class="buttons">
+                    <button class="menuBtn" id="btnActive">Control panel</button>
+                    <button class="menuBtn">Supervision</button>
+                    <button class="menuBtn">Reports</button>
+                </div>
+            </div>
+            <div class="options2">
+                <a href="./login.html">
+                    <button class="logout" onclick="logout()">Log out</button>
+                </a>
+            </div>
+        </div>
+        <div class="subMenu">
+            <div class="optionsbtn">
+                <button onclick="listUsers()">List Users</button>
+                <button onclick="invoices()">Invoices</button>
+                <button onclick="rentalHistory()">Rental History</button>
+            </div>
+        </div>
+        
+        <div id="form">
+
+        </div>
+
+        <div class="content">
+            
+        </div>
+    </div>
+</body>
+    <script src="../js/adminUsers.js"></script>
+    <script src="../js/adminRentalHistory.js"></script>
+    <script src="../js/adminButtons.js"></script>
+    <script src="../js/adminInvoices.js"></script>
+    <script src="../js/adminToolsStatus.js"></script>
+    <script src="../js/reportDamage.js"></script>
+    <script src="../js/adminMostRented.js"></script>
+</html>
