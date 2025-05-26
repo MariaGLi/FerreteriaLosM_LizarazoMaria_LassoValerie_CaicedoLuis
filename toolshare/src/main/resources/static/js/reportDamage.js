@@ -83,7 +83,11 @@ function showForm(id){
 
 }
 document.addEventListener('click',function(e) {
-    if (!form.contains(e.target) && !button.contains(e.target)) {
+    const form= document.getElementById("form");
+
+    if(!form) return;
+
+    if (!form.contains(e.target) && !e.target.className.startsWith("button")) {
         form.innerHTML=``;
     }
 });

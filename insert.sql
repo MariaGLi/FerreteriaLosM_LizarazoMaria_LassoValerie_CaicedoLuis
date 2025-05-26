@@ -141,21 +141,16 @@ INSERT INTO Returns_Deliveries (delivery_date, return_date, commentary, status, 
 INSERT INTO Payments (payment_method, price_total, payment_date, status, id_reservations_id) VALUES
 ('Bancolombia', 550000.00, '2023-05-26', 'Paid', 1),
 ('Davivienda', 1100000.00, '2023-06-02', 'Paid', 2),
-('Bank of Bogotá', 660000.00, '2023-07-04', 'Pending', 3),
 ('Popular Bank', 1460000.00, '2023-07-12', 'Paid', 4),
 ('AV Villas Bank', 550000.00, '2023-07-26', 'Paid', 5),
 ('BBVA Colombia', 770000.00, '2023-08-06', 'Failed', 6),
-('Scotiabank Colpatria', 660000.00, '2023-09-02', 'Pending', 7),
 ('Agrarian Bank', 1285000.00, '2023-09-11', 'Paid', 8),
 ('Western Bank', 550000.00, '2023-09-26', 'Paid', 9),
 ('Bancolombia', 808000.00, '2023-10-06', 'Failed', 10),
 ('Davivienda', 920000.00, '2023-10-26', 'Paid', 11),
 ('Bank of Bogotá', 994000.00, '2023-11-02', 'Paid', 12),
-('Popular Bank', 736000.00, '2023-12-02', 'Pending', 13),
 ('AV Villas Bank', 1100000.00, '2023-12-11', 'Paid', 14),
 ('BBVA Colombia', 1024000.00, '2023-12-29', 'Paid', 15),
-('Scotiabank Colpatria', 950000.00, '2024-01-06', 'Paid', 16),
-('Agrarian Bank', 770000.00, '2024-01-26', 'Pending', 17),
 ('Western Bank', 697000.00, '2024-02-02', 'Failed', 18);
 --('Bancolombia', 1170000.00, '2024-02-26', 'Paid', 19);
 --('Davivienda', 1285000.00, '2024-03-06', 'Paid', 20);
@@ -174,11 +169,7 @@ INSERT INTO Invoices (name_tool_share, nit, address, number_invoice, cellphone, 
 ('ToolShare LLC', '900123456-7', '123 Street #45-67, Bogotá', 1010, '300777899', '2023-05-01', '2023-10-06', '2023-11-06', 'https://firma.toolshare.com/1010', 808000.00, 10, 10),
 ('ToolShare LLC', '900123456-7', '123 Street #45-67, Bogotá', 1011, '300888900', '2023-05-01', '2023-10-26', '2023-11-26', 'https://firma.toolshare.com/1011', 920000.00, 11, 11),
 ('ToolShare LLC', '900123456-7', '123 Street #45-67, Bogotá', 1012, '3010001122', '2023-05-01', '2023-11-02', '2023-12-02', 'https://firma.toolshare.com/1012', 994000.00, 12, 12),
-('ToolShare LLC', '900123456-7', '123 Street #45-67, Bogotá', 1013, '3011112233', '2023-05-01', '2023-12-02', '2024-01-02', 'https://firma.toolshare.com/1013', 736000.00, 13, 13),
-('ToolShare LLC', '900123456-7', '123 Street #45-67, Bogotá', 1014, '3012223344', '2023-05-01', '2023-12-11', '2024-01-11', 'https://firma.toolshare.com/1014', 1100000.00, 14, 14),
-('ToolShare LLC', '900123456-7', '123 Street #45-67, Bogotá', 1015, '3013334455', '2023-05-01', '2023-12-29', '2024-01-29', 'https://firma.toolshare.com/1015', 1024000.00, 15, 15),
-('ToolShare LLC', '900123456-7', '123 Street #45-67, Bogotá', 1016, '3014445566', '2023-05-01', '2024-01-06', '2024-02-06', 'https://firma.toolshare.com/1016', 950000.00, 16, 16),
-('ToolShare LLC', '900123456-7', '123 Street #45-67, Bogotá', 1017, '301555667', '2023-05-01', '2024-01-26', '2024-02-26', 'https://firma.toolshare.com/1017', 770000.00, 17, 17);
+('ToolShare LLC', '900123456-7', '123 Street #45-67, Bogotá', 1013, '3011112233', '2023-05-01', '2023-12-02', '2024-01-02', 'https://firma.toolshare.com/1013', 736000.00, 13, 13);
 
 --Tools_Invoices
 INSERT INTO Tools_Invoices (unit_value, quantity, total_value, tools_id, invoice_id) VALUES
@@ -194,11 +185,7 @@ INSERT INTO Tools_Invoices (unit_value, quantity, total_value, tools_id, invoice
 (70000.00, 9, 630000.00, 10, 10),
 (25000.00, 20, 500000.00, 11, 11),
 (65000.00, 6, 390000.00, 12, 12),
-(85000.00, 5, 425000.00, 13, 13),
-(40000.00, 12, 480000.00, 14, 14),
-(30000.00, 18, 540000.00, 15, 15),
-(50000.00, 14, 700000.00, 16, 16),
-(25000.00, 10, 250000.00, 17, 17);
+(85000.00, 5, 425000.00, 13, 13);
 
 --Damage_Report
 INSERT INTO Damage_Report (report_date, description, solution_date, status, id_users_report_id, id_toolsec_id, id_reservation_id) VALUES

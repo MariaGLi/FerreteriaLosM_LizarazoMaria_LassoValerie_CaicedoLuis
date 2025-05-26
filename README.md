@@ -252,13 +252,17 @@ Colocamos lo siguiente en el body:
 11. [http://localhost:8080/InventoryManagement/toolsAdd]: Agrega una herramienta (POST)
 Ejemplo de que datos se deberian agregar:
 
-"supplierId": 2,
-"type": “Tool”,       
-name": “hammer”,
-"category": “hammer”
-"dateRegister": “2025-05-05”,
-"priceDay": 2.2,
-"description": “a hammer of last”
+{
+
+    "supplierId": 2,
+    "type": “Tool”,       
+    name": “hammer”,
+    "category": “hammer”
+    "dateRegister": “2025-05-05”,
+    "priceDay": 2.2,
+    "description": “a hammer of last”,
+    "image": "link de la imagen de la herramienta que se está agregando"
+}
 
 Si se prueba en JS el proveedor solo ingresará los datos necesarios, el id y la fecha el programa los ingresa automáticamente.
 
@@ -309,9 +313,10 @@ Colocamos lo siguiente en el body:
 
 7. [http://localhost:8080/pay/payPending]: Le muestra al cliente todos los pagos que estan pendientes por pagar (GET)
 
-8. [http://localhost:8080/pay/payBy/21]: Actualiza el estado de la factura de pendiente a pagado (PUT)
+8. [http://localhost:8080/pay/payBy/21]: Actualiza el estado de la factura de pendiente a pagado (PUT). Colocamos lo siguiente en el body:
 
 {
+
     "id": 21,
     "payment_method": "Bancolombia"
 }
@@ -328,9 +333,9 @@ https://github.com/MariaGLi/FerreteriaLosM_LizarazoMaria_LassoValerie_CaicedoLui
 
 ### 2. Importar el proyecto como Maven en tu IDE preferido
 
-1. Abre tu IDE (como Visual Studio Code).
+1. Abre tu IDE (Visual Studio Code).
 
-2. Selecciona "Importar proyecto como Maven" ó da clic en (file, luego da clic en open folder y busca la carpeta clonada).
+2. Da clic en (file, luego da clic en open folder y busca la carpeta clonada).
 
 3. Espera a que se descarguen las dependencias.
 
@@ -353,7 +358,7 @@ Haz clic derecho sobre la clase principal (login.html) y elige la opción "Open 
 
 ### 6. Probar los endpoints
 
-Usa Postman para probar los endpoints definidos.
+Use Postman para probar los endpoints definidos.
 
 ## ✌️  Desarrollado por:
 Proyecto realizado por María Guadalupe Lizarazo Leal, Valerie Michell Lasso y Luis Miguel Caicedo Bermón, estudiantes de Campus-Lands como filtro previo a la evaluación final del módulo.
