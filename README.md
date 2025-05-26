@@ -39,6 +39,16 @@ Este proyecto lo divididimos en un backend robusto en Spring Boot, con una auten
 
 ## 🧩 Estructura del Proyecto
 
+![alt text](image.png)
+
+![alt text](image-1.png)
+
+![alt text](image-2.png)
+
+![alt text](image-3.png)
+
+![alt text](image-4.png)
+
 ## 🔐 Seguridad
 
 Para la seguridad del proyecto implementamos la autenticación con JWT definiendo los roles ya predefinidos(ADMIN, SUPPLIER, CUSTOMER); tambien manejamos la protección de las rutas vulnerables según los permisos dados por los tokens.
@@ -145,27 +155,205 @@ La carpeta [JWT]: Esta carpeta nos permite crear el filtro de autenticación de 
 
 ## 📝 Documentación Swagger
 
-Incluye:
+Para probar estos endpoints, deberán hacerlo mediante la aplicaión Postman.
 
-- Todos los endpoints
-- Ejemplos de solicitudes/respuestas JSON
-- Requerimientos de autenticación con JWT
+### Administrador:
+
+- [http://localhost:8080/api/auth/register]: Colocamos lo siguiente en el body para registrar un admin:
+
+{
+    
+    "name":"Luismi",
+    "lastname":"Caicedo",
+    "cellphone":"3243293371",
+    "email":"luis10@gmail.com",
+    "username":"lucho",
+    "password":"luis10",
+    "type":"Admin"
+}
+
+- [http://localhost:8080/api/admin/damageReport]: Nos muestra el reporte con la información de la herramienta y la reserva en la que se generó el daño.
+
+- [http://localhost:8080/api/admin/damageReport/id]: Actualiza un reporte de daños remplazando la palabra "id" por el ID del reporte. Para eso, colocamos este ejemplo del body: 
+
+{
+
+    "description":"Herramienta dañada por desgaste",
+    "solutionDate":"2024-01-01",
+    "status":"Pending"
+}
+
+Siendo el status de la siguiente manera: "Pending","Under","Resolved".
+
+- [http://localhost:8080/api/admin/invoices]: Nos muestra toda la informacion de las facturas.
+
+- [http://localhost:8080/api/admin/mostRented]: Muestra los productos en orden descendente por su cantidad de compras, recibiendo un body de la siguiente manera:
+
+{
+
+    "startDate":"2023-01-01",
+    "endDate":"2023-06-30"
+}
+
+El cual es un rango de fechas en que se vendieron productos.
+
+### Proveedor:
+
+1. Registrar un proveedor (POST)
+[http://localhost:8080/api/auth/register]: 
+Colocamos lo siguiente en el body:
+
+{
+    
+    "name":"Valerie",
+    "lastname":"Lasso",
+    "cellphone":"3112195955",
+    "email":"val@gmail.com",
+    "username":"val",
+    "password":"val12",
+    "type":"Supplier"
+}
+
+2. Iniciar sesion (POST)
+[http://localhost:8080/api/auth/login]
+Colocamos lo siguiente en el body:
+
+{
+
+    "username": "val",
+    "password": "val12"
+}
+
+3. [http://localhost:8080/reservationManagement/pending]: Muestra todas las reservas que ha hecho un cliente y/o han sido aprobadas. (GET)
+
+4. [http://localhost:8080/reservationManagement/return]: Muestra todas las reservas que fueron aceptadas y un cliente por motivos X canceló (GET)
+
+5. [http://localhost:8080/reservationManagement/returnAccept]: Este link o end point nos sirve para obtener todas las reservas que el proovedor acepto que el cliente cancelara, y nos muestra las herramientas de esa reserva con un formulario para generar un reporte del estado. (GET)
+
+6. [http://localhost:8080/damagedReport/report]: Se usa en el JS para generar el reporte de daño de cada herramienta que fue retornada(POST). Colocando lo siguiente en el body:
+
+
+{
+
+    "reservationId":12,
+    "commentary": "the project was cancelled for business reasons",
+    "status":"Good",
+    "returnDate":"2024-05-05"
+}
+
+7. [http://localhost:8080/reservationManagement/ReturnAccept/id]: Actualiza el estado a retorno aceptado, que es para cuando el cliente cancela la reserva (PUT)
+
+8. [http://localhost:8080/reservationManagement/ReturnReject/id]: Actualiza el estado a retorno rechazado, que es para cuando el cliente cancela la reserva (PUT)
+
+9. [http://localhost:8080/InventoryManagement/all]: Obtiene todas las herramientas o equipos de construcción (GET)
+
+10. [http://localhost:8080/payment/paid]: Muestra todo los comprobantes de pago (GET)
+
+11. [http://localhost:8080/InventoryManagement/toolsAdd]: Agrega una herramienta (POST)
+Ejemplo de que datos se deberian agregar:
+
+"supplierId": 2,
+"type": “Tool”,       
+name": “hammer”,
+"category": “hammer”
+"dateRegister": “2025-05-05”,
+"priceDay": 2.2,
+"description": “a hammer of last”
+
+Si se prueba en JS el proveedor solo ingresará los datos necesarios, el id y la fecha el programa los ingresa automáticamente.
+
+### Cliente:
+
+1. Registrar un cliente (POST)
+[http://localhost:8080/api/auth/register]: 
+Colocamos lo siguiente en el body:
+
+{
+    
+    "name":"María",
+    "lastname":"Lizarazo",
+    "cellphone":"3123154497",
+    "email":" maria27@gmail.com",
+    "username":"maria",
+    "password":"maria2728",
+    "type":"Customer"
+}
+
+2. Iniciar sesion (POST)
+[http://localhost:8080/api/auth/login]
+Colocamos lo siguiente en el body:
+
+{
+
+    "username": "maria ",
+    "password": "maria2728"
+}
+
+3. [http://localhost:8080/reservations/addReservation]: El cliente agg una reserva (POST)
+Colocamos lo siguiente en el body:
+
+{
+
+    "startDate": "2024-05-05",
+    "endDate": "2024-06-06",
+    "requestDate": "2024-03-03",
+    "idClient": 5,
+    "idToolEC": [1,4,7]
+}
+
+4. [http://localhost:8080/api/customer/toolsAvailable]: Le muestra al cliente todas las herramientas o equipos de construcción disponibles. (GET)
+
+5. [http://localhost:8080/invoices/all]: Le muestra al cliente todas las facturas que tiene (GET)
+
+6. [http://localhost:8080/invoiceDownloads/${idInvoice}/download]: Este endpoint fue creado para descargar la factura que el cliente desee, tomando el id de la factura. (GET) (no se puede probar en el postman)
+
+7. [http://localhost:8080/pay/payPending]: Le muestra al cliente todos los pagos que estan pendientes por pagar (GET)
+
+8. [http://localhost:8080/pay/payBy/21]: Actualiza el estado de la factura de pendiente a pagado (PUT)
+
+{
+    "id": 21,
+    "payment_method": "Bancolombia"
+}
+
+Estos son todos los endpoints necesarios y usados en el JS, en java pueden que hallan mas.
 
 ## ⚙️ Instrucciones de Ejecución del proyecto
 
 ### 1. Clonar el repositorio
 
+Abre la terminal y ejecuta:
+
 https://github.com/MariaGLi/FerreteriaLosM_LizarazoMaria_LassoValerie_CaicedoLuis.git
 
 ### 2. Importar el proyecto como Maven en tu IDE preferido
 
-### 3. Configurar PostgreSQL y ejecutar los scripts SQL ubicados en /sql
+1. Abre tu IDE (como Visual Studio Code).
+
+2. Selecciona "Importar proyecto como Maven" ó da clic en (file, luego da clic en open folder y busca la carpeta clonada).
+
+3. Espera a que se descarguen las dependencias.
+
+### 3. Configurar PostgreSQL
+
+- Crea una base de datos llamada ToolsShare en PostgreSQL.
+
+- Ejecuta las inserciones SQL ubicadas en la carpeta /sql del proyecto:
+    - insert.sql para insertar los datos de prueba.
 
 ### 4. Configurar el archivo application.properties
 
-### 5. Ejecutar la aplicación desde tu IDE o con el siguiente comando:
-./mvnw spring-boot:run
+Abre el archivo src/main/resources/application.properties y asegúrate de que tenga la información correcta, anteriormente colocada en el apartado **Configuración del Proyecto**.
 
+⚠️ Reemplace nuestra contraseña con su contraseña real de PostgreSQL.
+
+### 5. Ejecutar la aplicación
+
+Haz clic derecho sobre la clase principal (login.html) y elige la opción "Open with live server".
+
+### 6. Probar los endpoints
+
+Usa Postman para probar los endpoints definidos.
 
 ## ✌️  Desarrollado por:
 Proyecto realizado por María Guadalupe Lizarazo Leal, Valerie Michell Lasso y Luis Miguel Caicedo Bermón, estudiantes de Campus-Lands como filtro previo a la evaluación final del módulo.
